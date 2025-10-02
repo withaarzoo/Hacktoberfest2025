@@ -48,6 +48,14 @@
     "project_netlify_link": "https://rakesh-checkbox.netlify.app/"
   },
   {
+    "name": "Rakesh Sharma",
+    "occupation": "Software Engineer at @Paytm",
+    "place": "Delhi, India",
+    "bio": "As a Software Engineer at Paytm, I'm on a mission to simplify financial services for everyone. I architect and build the technology that brings seamless payments, banking, and commerce to the fingertips of millions, driving true financial inclusion in India.",
+    "github_profile_url": "https://github.com/rakesh-dev-07",
+    "project_netlify_link": "https://rakesh-input-field.netlify.app/"
+  },
+  {
     "name": "Nusrat Jahan",
     "occupation": "Frontend Web Developer",
     "place": "Chennai, India",
