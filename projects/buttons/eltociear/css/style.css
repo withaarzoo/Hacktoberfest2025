@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1em 2.5em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 20px rgba(102, 126, 234, 0.4),
+        0 0 40px rgba(118, 75, 162, 0.2);
+    transition: all 0.3s ease;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 30px rgba(102, 126, 234, 0.6),
+        0 0 60px rgba(118, 75, 162, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 20px rgba(102, 126, 234, 0.5),
+        0 0 40px rgba(118, 75, 162, 0.3);
+}
