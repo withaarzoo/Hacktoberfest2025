@@ -342,5 +342,13 @@
     "bio": "I'm an Applied Innovator and Google Student Ambassador with a strong foundation in full-stack development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
     "github_profile_url": "https://github.com/shahjash1634",
     "project_netlify_link": "https://storm-switch.netlify.app/"
+  },
+  {
+    "name": "Karthik Srivathsa P L",
+    "occupation": "Student",
+    "place": "Bengaluru, India",
+    "bio": "CSE Student getting into open-source and little experience in Web Dvelopment",
+    "github_profile_url": "https://github.com/karthik-srivathsa-05",
+    "project_netlify_link": "https://highlevel-radio-button.netlify.app"
   }
 ]
