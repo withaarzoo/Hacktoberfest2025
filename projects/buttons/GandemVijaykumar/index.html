@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Animated CSS Buttons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Crazy Animated CSS Buttons</h1>
+
+    <div class="button-showcase">
+        
+        <div class="button-container">
+            <div class="button-title">1. Neon Glow Button</div>
+            <button class="btn btn-neon">HOVER ME</button>
+        </div>
+
+        <div class="button-container">
+            <div class="button-title">2. 3D Flip Button</div>
+            <div class="btn-flip-container">
+                <div class="btn btn-flip">
+                    <div class="front">FLIP ME!</div>
+                    <div class="back">SUCCESS!</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <div class="button-title">3. Dynamic Border Button</div>
+            <button class="btn btn-border-animate">DYNAMIC</button>
+        </div>
+        
+        <div class="button-container">
+            <div class="button-title">4. Ripple Effect Button</div>
+            <button class="btn btn-ripple" id="ripple-btn">CLICK ME</button>
+        </div>
+
+        <div class="button-container">
+            <div class="button-title">5. Morphing & Floating Button</div>
+            <button class="btn btn-morph">
+                <span class="text-container">
+                    <span class="text">MORPH</span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // JS is needed for the ripple effect to originate from the click position.
+        // A pure CSS version would always ripple from the center.
+        const rippleButton = document.getElementById('ripple-btn');
+        rippleButton.addEventListener('click', function (e) {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            let ripple = document.createElement('span');
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // The morphing button has a small issue where text doesn't reappear
+        // This script adds a check to fix the text visibility after hover.
+        const morphBtn = document.querySelector('.btn-morph');
+        const morphText = morphBtn.querySelector('.text');
+        morphBtn.addEventListener('mouseleave', () => {
+            // Give time for hover-out transition to complete
+            setTimeout(() => {
+                morphText.style.opacity = '1';
+            }, 500);
+        });
+
+    </script>
+</body>
+</html>
+
