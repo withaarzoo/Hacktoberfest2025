@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("contributors.json");
       if (!response.ok) throw new Error("contributors.json not found");
-      allContributors = await response.json();
+      const rawContributors = await response.json();
+      
+      // Filter out duplicates and invalid entries
+      allContributors = filterAndValidateContributors(rawContributors);
 
       // Display the first batch of placeholder contributors
       displayNextBatch();
@@ -35,6 +38,40 @@ document.addEventListener("DOMContentLoaded", () => {
     } finally {
       loader.style.display = "none";
     }
+  }
+
+  /**
+   * Filters out duplicate contributors and validates data integrity.
+   */
+  function filterAndValidateContributors(contributors) {
+    const seen = new Set();
+    const valid = [];
+
+    contributors.forEach(contributor => {
+      // Extract username from GitHub URL
+      if (!contributor.github_profile_url) return;
+      
+      const username = contributor.github_profile_url.split("/").pop();
+      
+      // Skip if we've already seen this username or if required fields are missing
+      if (seen.has(username) || !contributor.name || !contributor.bio) {
+        console.warn(`Skipping duplicate or invalid contributor: ${username}`);
+        return;
+      }
+      
+      seen.add(username);
+      valid.push({
+        ...contributor,
+        // Ensure consistent data format
+        name: contributor.name.trim(),
+        bio: contributor.bio.trim(),
+        occupation: contributor.occupation?.trim() || '',
+        place: contributor.place?.trim() || ''
+      });
+    });
+
+    console.log(`Loaded ${valid.length} unique contributors from ${contributors.length} entries`);
+    return valid;
   }
 
   /**
@@ -66,22 +103,29 @@ document.addEventListener("DOMContentLoaded", () => {
    * Creates a placeholder card with data from the JSON file.
    */
   function createPlaceholderCard(contributor, index) {
-    const { name, bio, github_profile_url, project_netlify_link } = contributor;
+    const { name, bio, github_profile_url, project_netlify_link, occupation, place } = contributor;
     const username = github_profile_url.split("/").pop();
 
     const card = document.createElement("div");
     card.className = "contributor-card";
     card.style.animationDelay = `${index * 50}ms`;
     card.dataset.username = username;
+    
+    // Store original contributor data to prevent overwriting
+    card.dataset.originalName = name;
+    card.dataset.originalBio = bio;
 
-    // Use the name from the JSON file as an initial placeholder
+    // Enhanced bio that includes occupation and place if available
+    const enhancedBio = [bio, occupation, place].filter(Boolean).join(" • ");
+
+    // Use the exact name and bio from the JSON file
     card.innerHTML = `
             <img src="" alt="Profile picture of ${name}" class="profile-image">
             <div class="card-content">
                 <div>
                     <h3>${name}</h3>
                     <p class="username">@${username}</p>
-                    <p class="bio">${bio}</p>
+                    <p class="bio">${enhancedBio}</p>
                 </div>
                 <div class="stats">
                     <div class="stat-item"><span class="stat-value">--</span><span class="stat-label">followers</span></div>
@@ -110,11 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.dataset.loaded = "true"; // Mark as loaded
 
-      const nameElement = card.querySelector("h3");
-      // Use the GitHub name, but fall back to the username if the name isn't set
-      nameElement.textContent = data.name || data.login;
+      // DO NOT override the name - keep the original name from JSON
+      // The original name from contributors.json should be preserved
+      // as it represents the actual contributor's preferred name
 
-      // Update image with a smooth fade-in effect
+      // Update profile image with a smooth fade-in effect
       const profileImage = card.querySelector(".profile-image");
       profileImage.style.opacity = 0;
       profileImage.onload = () => {
@@ -122,14 +166,17 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       profileImage.src = data.avatar_url;
 
-      // Update stats
+      // Update stats only (preserve original bio and name)
       const stats = card.querySelectorAll(".stat-value");
       stats[0].textContent = data.followers || 0;
       stats[1].textContent = data.following || 0;
       stats[2].textContent = data.public_repos || 0;
     } catch (error) {
       console.error(`Failed to fetch data for ${username}:`, error);
-      card.querySelector(".bio").textContent = "Could not load GitHub data.";
+      // Don't override the bio on error - keep the original bio
+      // Add a subtle indicator that GitHub data couldn't be loaded
+      const stats = card.querySelectorAll(".stat-value");
+      stats.forEach(stat => stat.textContent = "N/A");
     }
   }
 
@@ -154,15 +201,25 @@ document.addEventListener("DOMContentLoaded", () => {
   function filterContributors() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const cards = container.querySelectorAll(".contributor-card");
+    
     cards.forEach((card) => {
       const username = card.dataset.username.toLowerCase();
-      if (username.includes(searchTerm)) {
+      const name = card.dataset.originalName?.toLowerCase() || '';
+      const bio = card.dataset.originalBio?.toLowerCase() || '';
+      
+      // Search in username, name, and bio for better results
+      const matchesSearch = username.includes(searchTerm) || 
+                           name.includes(searchTerm) || 
+                           bio.includes(searchTerm);
+      
+      if (matchesSearch) {
         card.classList.remove("hidden");
       } else {
         card.classList.add("hidden");
       }
     });
 
+    // Update load more button visibility
     if (searchTerm) {
       loadMoreContainer.style.display = "none";
     } else if (displayedCount < allContributors.length) {
