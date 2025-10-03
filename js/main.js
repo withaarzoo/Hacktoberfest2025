@@ -9,12 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const searchInput = document.getElementById("search-input");
   const navbar = document.querySelector(".navbar-glass");
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
   // --- State Variables ---
   let allContributors = [];
+  let filteredContributors = [];
   let displayedCount = 0;
   const batchSize = 50;
   let cardObserver;
+  let currentFilter = "all";
 
   /**
    * Main function to fetch the initial JSON and display the first batch.
@@ -26,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("contributors.json");
       if (!response.ok) throw new Error("contributors.json not found");
       allContributors = await response.json();
+      filteredContributors = [...allContributors];
 
       // Display the first batch of placeholder contributors
       displayNextBatch();
@@ -41,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * Displays the next batch of contributors as placeholder cards.
    */
   function displayNextBatch() {
-    const batch = allContributors.slice(
+    const batch = filteredContributors.slice(
       displayedCount,
       displayedCount + batchSize
     );
@@ -55,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     displayedCount += batch.length;
 
     // Show/hide "Load More" button
-    if (displayedCount < allContributors.length) {
+    if (displayedCount < filteredContributors.length) {
       loadMoreContainer.style.display = "block";
     } else {
       loadMoreContainer.style.display = "none";
@@ -149,25 +153,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * Filters currently visible cards based on search input.
+   * Filters contributors based on search input and current category.
    */
-  function filterContributors() {
+  function applyFilters() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const cards = container.querySelectorAll(".contributor-card");
-    cards.forEach((card) => {
-      const username = card.dataset.username.toLowerCase();
-      if (username.includes(searchTerm)) {
-        card.classList.remove("hidden");
-      } else {
-        card.classList.add("hidden");
-      }
-    });
+
+    if (currentFilter === "all") {
+      filteredContributors = allContributors;
+    } else {
+      filteredContributors = allContributors.filter(c => c.project_netlify_link.toLowerCase().includes(currentFilter));
+    }
 
     if (searchTerm) {
-      loadMoreContainer.style.display = "none";
-    } else if (displayedCount < allContributors.length) {
-      loadMoreContainer.style.display = "block";
+      filteredContributors = filteredContributors.filter(c => c.github_profile_url.toLowerCase().includes(searchTerm));
     }
+
+    // Reset and display
+    container.innerHTML = "";
+    displayedCount = 0;
+    displayNextBatch();
   }
 
   /**
@@ -184,8 +188,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Event Listeners ---
   loadMoreButton.addEventListener("click", displayNextBatch);
   searchForm.addEventListener("submit", (e) => e.preventDefault());
-  searchInput.addEventListener("input", filterContributors);
+  searchInput.addEventListener("input", applyFilters);
   window.addEventListener("scroll", handleScroll);
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      currentFilter = button.dataset.filter;
+      applyFilters();
+    });
+  });
 
   // --- Initial Load ---
   initialize();

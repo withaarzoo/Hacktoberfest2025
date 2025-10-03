@@ -441,3 +441,32 @@ footer {
 .search-button:hover {
     background-color: #31d858;
 }
+
+/* --- 10. Filter Buttons --- */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filter-btn {
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    border: 1px solid #444c56;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover {
+    background-color: #373e47;
+    border-color: #5a626c;
+}
+.filter-btn.active {
+    background-color: var(--accent-green);
+    color: var(--text-white);
+    border-color: var(--accent-green);
+}
