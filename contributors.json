@@ -342,5 +342,14 @@
     "bio": "I'm an Applied Innovator and Google Student Ambassador with a strong foundation in full-stack development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
     "github_profile_url": "https://github.com/shahjash1634",
     "project_netlify_link": "https://storm-switch.netlify.app/"
-  }
+  },
+  {
+  "name": "Om Bhorkade",
+  "occupation": "Frontend Developer",
+  "place": "Pune, India",
+  "bio": "A passionate frontend developer dedicated to crafting beautiful and intuitive UI/UX components and websites.",
+  "github_profile_url": "https://github.com/Orb-20",
+  "project_netlify_link": "https://orb2006.netlify.app"
+}
+  
 ]
