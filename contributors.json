@@ -526,5 +526,13 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
+  },
+  {
+    "name": "Nayanika Acharjee",
+    "occupation": "Software engineer",
+    "place": "Agartala, India",
+    "bio": "Where technology meets empathy, I design and build experiences that resonate.",
+    "github_profile_url": "https://github.com/Nayanika-Acharjee",
+    "project_netlify_link": "https://fancy-button-nayanika.netlify.app/"
   }
 ]
