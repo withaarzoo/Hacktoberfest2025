@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Drift Pilot</title>
+    <!-- Load Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tone.js for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <!-- Load Orbitron font for arcade look -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    </style>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        'space-dark': '#0f172a', /* slate-900 */
+                        'ship-color': '#34d399', /* emerald-400 */
+                        'debris-color': '#f87171', /* red-400 */
+                        'score-color': '#fcd34d', /* amber-300 */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Game CSS -->
+    <style>
+        /* Base styles for the "Galaxy Drift Pilot" theme */
+        body {
+            background-color: #0f172a; 
+            color: #fcd34d; 
+            font-family: 'Orbitron', sans-serif;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        /* Canvas for the game drawing */
+        #game-canvas {
+            display: block;
+            background-color: #1e293b; /* Darker slate */
+            border: 3px solid #fcd34d;
+            box-shadow: 0 0 30px rgba(252, 211, 77, 0.5); /* Glowing border */
+            width: 95%;
+            max-width: 500px;
+            height: 70vh;
+            min-height: 400px;
+            margin: 1rem auto;
+            cursor: none; /* Mouse/touch controls the ship directly */
+        }
+        
+        /* Button styling */
+        .game-button {
+            font-size: 1.25rem;
+            padding: 0.75rem 2rem;
+            cursor: pointer;
+            border: 2px solid #fcd34d;
+            background: #1f2937;
+            color: #fcd34d;
+            box-shadow: 0 4px 15px rgba(252, 211, 77, 0.4);
+            transition: all 0.15s ease-in-out;
+        }
+
+        .game-button:hover:not(:disabled) {
+            background: #fcd34d;
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(252, 211, 77, 0.6);
+        }
+
+        .game-button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .game-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="p-4 flex flex-col items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-4xl flex flex-col items-center">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-score-color tracking-wider text-shadow-xl text-center">
+            🚀 GALAXY DRIFT PILOT 💥
+        </h1>
+
+        <!-- Score/Level Display -->
+        <div class="w-full max-w-[500px] flex justify-between text-xl sm:text-2xl font-mono p-4 rounded-lg bg-gray-800 border-2 border-gray-700 shadow-lg mb-4">
+            <span>SCORE: <span id="score-display" class="text-score-color">0</span></span>
+            <span>BEST: <span id="high-score-display" class="text-ship-color">0</span></span>
+        </div>
+
+        <!-- Game Canvas Area -->
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- Controls (Start/Stop) -->
+        <div class="flex space-x-4 mt-6">
+            <button id="start-button" class="game-button rounded-full">
+                Start Drift
+            </button>
+            <button id="stop-button" class="game-button rounded-full hidden bg-red-800 border-red-500 text-red-300 hover:bg-red-500 hover:text-white" disabled>
+                Stop Game
+            </button>
+        </div>
+
+        <!-- Game Over / Start Message Modal -->
+        <div id="message-modal" class="hidden fixed inset-0 bg-space-dark bg-opacity-90 z-20 items-center justify-center" onclick="hideMessage()">
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-4 border-score-color max-w-md w-full mx-4" onclick="event.stopPropagation()">
+                <h2 id="modal-title" class="text-3xl font-bold mb-4 text-score-color">Pilot Briefing</h2>
+                <p id="modal-message" class="text-gray-300 mb-6 text-lg">Use your mouse (or tap/drag on mobile) to control the ship's horizontal position. Avoid the falling space debris! Survival is key to a high score.</p>
+                
+                <button class="game-button rounded-lg w-full" onclick="hideMessage()">Engage Thrusters</button>
+            </div>
+        </div>
+
+        <!-- Signature/Credit -->
+        <p class="text-xs text-gray-500 mt-6 tracking-widest uppercase">
+            Code Signature: abhijat sarari
+        </p>
+    </div>
+
+    <!-- JavaScript Game Logic -->
+    <script>
+        // Global Game Variables
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let highscore = 0;
+        let score = 0;
+        let isGameRunning = false;
+        let animationFrameId;
+        let lastTime = 0;
+        
+        // Game Constants
+        const SHIP_SIZE = 25;
+        const DEBRIS_MAX_SIZE = 30;
+        const DEBRIS_MIN_SPEED = 1.5;
+        const INITIAL_SPAWN_INTERVAL = 800; // ms
+        
+        // Game objects
+        let ship = { x: 0, y: 0, width: SHIP_SIZE, height: SHIP_SIZE };
+        let debris = [];
+        let lastSpawnTime = 0;
+        let spawnInterval = INITIAL_SPAWN_INTERVAL;
+
+        // --- Tone.js Setup for sounds ---
+        let crashSynth, scoreSynth;
+        
+        function initAudio() {
+            try {
+                if (!crashSynth) {
+                    Tone.start();
+                    // Synth for crash
+                    crashSynth = new Tone.NoiseSynth({
+                        noise: { type: 'white' },
+                        envelope: { attack: 0.01, decay: 0.3, sustain: 0, release: 0.1 }
+                    }).toDestination();
+                    
+                    // Synth for score/tick
+                    scoreSynth = new Tone.Synth({
+                        oscillator: { type: "square" },
+                        envelope: { attack: 0.005, decay: 0.05, sustain: 0, release: 0.05 }
+                    }).toDestination();
+                }
+            } catch (e) {
+                console.error("Tone.js failed to initialize:", e);
+            }
+        }
+
+        // Sound functions
+        function playCrashSound() {
+            if (crashSynth) {
+                crashSynth.triggerAttackRelease("4n");
+            }
+        }
+
+        function playScoreSound() {
+            if (scoreSynth) {
+                scoreSynth.triggerAttackRelease("C4", "16n");
+            }
+        }
+
+        // --- Drawing and Setup ---
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth > 500 ? 500 : container.clientWidth * 0.95;
+            canvas.height = 0.7 * window.innerHeight;
+            if (canvas.height < 400) canvas.height = 400; // Minimum height
+            
+            // Recenter ship initially
+            ship.x = canvas.width / 2 - ship.width / 2;
+            ship.y = canvas.height - ship.height - 30;
+        }
+        
+        /** Draws the starship as a simple triangle */
+        function drawShip() {
+            ctx.fillStyle = '#34d399';
+            
+            ctx.beginPath();
+            ctx.moveTo(ship.x + ship.width / 2, ship.y); // Top point
+            ctx.lineTo(ship.x, ship.y + ship.height); // Bottom left
+            ctx.lineTo(ship.x + ship.width, ship.y + ship.height); // Bottom right
+            ctx.closePath();
+            ctx.fill();
+
+            // Thruster fire (small triangle below the ship)
+            ctx.fillStyle = '#fcd34d';
+            ctx.beginPath();
+            ctx.moveTo(ship.x + ship.width / 2, ship.y + ship.height + 5);
+            ctx.lineTo(ship.x + ship.width * 0.3, ship.y + ship.height);
+            ctx.lineTo(ship.x + ship.width * 0.7, ship.y + ship.height);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        /** Draws debris as simple squares/rectangles */
+        function drawDebris(d) {
+            ctx.fillStyle = d.color;
+            ctx.fillRect(d.x, d.y, d.width, d.height);
+        }
+        
+        /** Renders all game elements */
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw a few static stars for background
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            for(let i = 0; i < 30; i++) {
+                ctx.fillRect(i * 15 + 10, (i * 20) % canvas.height, 1, 1);
+            }
+
+            debris.forEach(drawDebris);
+            drawShip();
+        }
+
+        // --- Game Logic ---
+
+        /** Creates a new debris object */
+        function spawnDebris() {
+            const size = Math.random() * (DEBRIS_MAX_SIZE - 10) + 10;
+            const speed = DEBRIS_MIN_SPEED * (1 + score / 500); // Speed up with score
+            
+            debris.push({
+                x: Math.random() * (canvas.width - size),
+                y: -size, // Start above the screen
+                width: size,
+                height: size,
+                vy: speed,
+                color: '#f87171' // Red debris
+            });
+        }
+        
+        /** Checks for collision between two rectangles (AABB) */
+        function checkCollision(r1, r2) {
+            return r1.x < r2.x + r2.width &&
+                   r1.x + r1.width > r2.x &&
+                   r1.y < r2.y + r2.height &&
+                   r1.y + r1.height > r2.y;
+        }
+
+        /** Updates and moves all debris */
+        function updateDebris() {
+            for (let i = debris.length - 1; i >= 0; i--) {
+                const d = debris[i];
+                d.y += d.vy;
+
+                // Check collision with the ship
+                if (checkCollision(ship, d)) {
+                    playCrashSound();
+                    endGame("CRASHED!", `Collision detected! Final score: ${score}`);
+                    return;
+                }
+
+                // Remove debris if it goes off screen
+                if (d.y > canvas.height) {
+                    debris.splice(i, 1);
+                    score += 10; // Score for successful avoidance
+                    playScoreSound();
+                }
+            }
+            
+            // Debris Spawning
+            const now = performance.now();
+            if (now - lastSpawnTime > spawnInterval && isGameRunning) {
+                spawnDebris();
+                // Gradually decrease spawn interval, but don't go below 100ms
+                spawnInterval = Math.max(150, INITIAL_SPAWN_INTERVAL - score * 0.5);
+                lastSpawnTime = now;
+            }
+        }
+        
+        /** Moves the ship based on the mouse/touch X position */
+        function moveShip(event) {
+            if (!isGameRunning) return;
+
+            let clientX;
+            if (event.touches) {
+                clientX = event.touches[0].clientX;
+            } else {
+                clientX = event.clientX;
+            }
+
+            const rect = canvas.getBoundingClientRect();
+            let newX = clientX - rect.left - ship.width / 2; // Center the ship under cursor
+            
+            // Clamp ship position within canvas bounds
+            newX = Math.max(0, Math.min(newX, canvas.width - ship.width));
+
+            ship.x = newX;
+        }
+
+        /** Main game loop */
+        function gameLoop(time) {
+            if (!isGameRunning) {
+                lastTime = time;
+                return;
+            }
+
+            // Update game logic
+            updateDebris();
+            
+            // Draw the new state
+            drawGame();
+            
+            // Update score display
+            updateScoreDisplay();
+
+            // Request next frame
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+        
+        // --- UI and Flow ---
+
+        function updateScoreDisplay() {
+            document.getElementById('score-display').textContent = score;
+            highscore = Math.max(highscore, score);
+            document.getElementById('high-score-display').textContent = highscore;
+        }
+
+        function showMessage(title, message) {
+            const modal = document.getElementById('message-modal');
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideMessage() {
+            const modal = document.getElementById('message-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        function endGame(title, message) {
+            if (!isGameRunning) return;
+
+            isGameRunning = false;
+            cancelAnimationFrame(animationFrameId);
+            
+            showMessage(title, message);
+
+            // Update Start/Stop buttons
+            document.getElementById('start-button').textContent = "Restart Drift";
+            document.getElementById('start-button').disabled = false;
+            document.getElementById('stop-button').classList.add('hidden');
+            document.getElementById('stop-button').disabled = true;
+        }
+
+        function startGame() {
+            // Initialize audio on first click interaction
+            initAudio();
+
+            // Reset state
+            score = 0;
+            debris = [];
+            spawnInterval = INITIAL_SPAWN_INTERVAL;
+            lastSpawnTime = performance.now();
+            isGameRunning = true;
+            
+            updateScoreDisplay();
+            hideMessage();
+            
+            // Update Start/Stop buttons
+            document.getElementById('start-button').disabled = true;
+            document.getElementById('start-button').textContent = "DRIFTING...";
+            document.getElementById('stop-button').classList.remove('hidden');
+            document.getElementById('stop-button').disabled = false;
+            
+            // Recenter ship
+            ship.x = canvas.width / 2 - ship.width / 2;
+
+            // Start the main loop
+            lastTime = performance.now();
+            gameLoop(lastTime);
+        }
+
+        // --- Event Listeners and Initial Setup ---
+
+        window.onload = function() {
+            resizeCanvas();
+            
+            // Event listeners
+            document.getElementById('start-button').addEventListener('click', startGame);
+            document.getElementById('stop-button').addEventListener('click', () => endGame("MISSION ABORTED", `You manually stopped the flight. Final Score: ${score}`));
+            
+            // Canvas interaction for movement
+            canvas.addEventListener('mousemove', moveShip);
+            canvas.addEventListener('touchmove', (e) => { 
+                e.preventDefault(); 
+                moveShip(e); 
+            });
+            
+            window.addEventListener('resize', resizeCanvas); // Make canvas responsive
+
+            // Draw initial state and show welcome message
+            drawGame();
+            updateScoreDisplay();
+            showMessage("Pilot Briefing", "Use your mouse (or tap/drag on mobile) to control the ship's horizontal position. Avoid the falling space debris! Survival is key to a high score.");
+        };
+    </script>
+</body>
+</html>
