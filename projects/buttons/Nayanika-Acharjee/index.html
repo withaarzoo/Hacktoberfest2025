@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Animated Button Only</title>
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+  <button class="amazing-btn" id="amazing" aria-pressed="false">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0.6"/>
+          </linearGradient>
+        </defs>
+        <path class="stroke" d="M18 8 L32 8 L25 22 L36 22 L18 44 L22 26 L12 26 Z" stroke="url(#g1)"/>
+      </svg>
+    </span>
+    <span class="label">Click me</span>
+  </button>
+
+  
+<script src="js/main.js"></script>
+
+</body>
+</html>

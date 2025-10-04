@@ -1,0 +1,83 @@
+:root{
+      --bg:#0f1724;
+      --accent-1:#7c3aed;
+      --accent-2:#06b6d4;
+      --click-accent-1:#22d3ee;
+      --click-accent-2:#9333ea;
+      --duration:480ms;
+      --initial-scale:1.2;
+      --clicked-scale:1.1;
+    }
+
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:radial-gradient(800px 400px at 50% 50%, rgba(124,58,237,0.08), transparent), var(--bg);
+      font-family:Inter, sans-serif;
+    }
+
+   .amazing-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; 
+  padding: 10px 16px; 
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px; 
+  cursor: pointer;
+  overflow: hidden;
+  transform: scale(var(--initial-scale));
+  transition: transform var(--duration) cubic-bezier(.2,.9,.3,1), background var(--duration) ease;
+  box-shadow: 0 4px 12px rgba(6,24,47,0.6); 
+}
+
+
+
+    .amazing-btn:focus{outline:none}
+    .amazing-btn:hover{transform:scale(var(--initial-scale)) translateY(-4px)}
+
+    .amazing-btn .icon{
+      order:-1; 
+      width:24px;
+      height:24px;
+      display:grid;
+      place-items:center;
+      transition:transform var(--duration) cubic-bezier(.2,.9,.3,1);
+    }
+
+    .amazing-btn .label{
+      transition:transform var(--duration) cubic-bezier(.2,.9,.3,1);
+    }
+
+    .icon svg path.stroke{
+      stroke-width:2.5;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      fill:none;
+      stroke-dasharray:140;
+      stroke-dashoffset:140;
+      transition:stroke-dashoffset 720ms cubic-bezier(.2,.9,.3,1), stroke 360ms linear;
+    }
+
+    .amazing-btn:hover .icon svg path.stroke{stroke-dashoffset:0}
+
+    .amazing-btn.active{
+      background:linear-gradient(90deg,var(--click-accent-1),var(--click-accent-2));
+      transform:scale(var(--clicked-scale));
+    }
+
+    .amazing-btn.active .icon{
+      transform:translateX(45px);
+    }
+
+    .amazing-btn.active .label{
+      transform:translateX(-35px);
+    }
+  
