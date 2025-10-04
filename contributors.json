@@ -534,5 +534,13 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Srijit Dey",
+    "occupation": "Web Developer",
+    "place": "Kolkata, India",
+    "bio": "A passionate web developer with a knack for creating interactive applications.",
+    "github_profile_url": "https://github.com/zeropse",
+    "project_netlify_link": "https://navbar-glassmorphic.netlify.app/"
   }
 ]
