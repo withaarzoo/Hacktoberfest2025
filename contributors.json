@@ -48,6 +48,22 @@
     "project_netlify_link": "https://neon-button-component.netlify.app/"
   },
   {
+    "name": "Abhijeet Patil",
+    "occupation": "Full Stack Developer",
+    "place": "Mumbai, India",
+    "bio": "Turning coffee into code and ideas into reality. Passionate about building beautiful, scalable web apps and always ready for a new tech adventure! 🚀",
+    "github_profile_url": "https://github.com/abhijeetpatilrm",
+    "project_netlify_link": "https://abhijeetpatil-loader.netlify.app/"
+  },
+  {
+    "name": "Abhijeet Patil",
+    "occupation": "Full Stack Developer",
+    "place": "Mumbai, India",
+    "bio": "Crafting playful, interactive UI components with a love for clean code and modern web tech. Always exploring new ways to make the web more fun! 😄",
+    "github_profile_url": "https://github.com/abhijeetpatilrm",
+    "project_netlify_link": "https://abhijeetpatil-radiobutton.netlify.app/"
+  },
+  {
     "name": "Rumi",
     "occupation": "Full-Stack Web Developer",
     "place": "Mumbai, India",
@@ -78,110 +94,6 @@
     "bio": "Software Engineer with 3 years of experience in web development. Focused on the technical backbone of SEO, data analysis, and content strategy to enhance website performance and user experience.",
     "github_profile_url": "https://github.com/ritwik1709",
     "project_netlify_link": "https://spontaneous-pothos-e6b2c6.netlify.app/"
-  },
-  {
-    "name": "Abhijeet Patil",
-    "occupation": "Full Stack Developer",
-    "place": "Mumbai, India",
-    "bio": "Turning coffee into code and ideas into reality. Passionate about building beautiful, scalable web apps and always ready for a new tech adventure! 🚀",
-    "github_profile_url": "https://github.com/abhijeetpatilrm",
-    "project_netlify_link": "https://abhijeetpatil-loader.netlify.app/"
-  },
-  {
-    "name": "Jash Shah",
-    "occupation": "Applied Innovator",
-    "place": "Mumbai, India",
-    "bio": "I'm an Applied Innovator and Google Student Ambassador with a strong foundation in full-stack development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
-    "github_profile_url": "https://github.com/shahjash1634",
-    "project_netlify_link": "https://cradle-load.netlify.app/"
-  },
-  {
-    "name": "Hari Thatikonda",
-    "occupation": "Software Developer",
-    "place": "Hyderabad, India",
-    "bio": "I am a Software Developer passionate about building scalable applications, solving challenging problems, and continuously improving through learning and innovation.",
-    "github_profile_url": "https://github.com/thughari",
-    "project_netlify_link": "https://thughari-card.netlify.app/"
-  },
-  {
-    "name": "Vishwas Naveen",
-    "occupation": "Student",
-    "place": "Bangalore, India",
-    "bio": "First-year AI/ML engineering student passionate about web development, hackathons, and building practical projects that solve real-world problems. Experienced in collaborating with teams on innovative ideas, from IoT prototypes to crowd management systems, while continuously exploring new technologies to grow as a developer.",
-    "github_profile_url": "https://github.com/sodium16",
-    "project_netlify_link": "https://sodium-button.netlify.app/"
-  },
-  {
-    "name": "Sumedh Udupa",
-    "occupation": "Full Stack Developer",
-    "place": "Bangalore, India",
-    "bio": "passionate about technology and open-source.",
-    "github_profile_url": "https://github.com/sumedhudupa",
-    "project_netlify_link": "https://weightlifter.netlify.app/"
-  },
-  {
-    "name": "Gunn Arora",
-    "occupation": "Software Developer Intern",
-    "place": "Punjab, India",
-    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
-    "github_profile_url": "https://github.com/gunn333",
-    "project_netlify_link": "https://starry-toggle.netlify.app"
-  },
-  {
-    "name": "Manroop Kaur",
-    "occupation": "Student",
-    "place": "Karnal, India",
-    "bio": "I am currently a final year student and passionate about learning new and challenging things.",
-    "github_profile_url": "https://github.com/manroop04",
-    "project_netlify_link": "https://scratch-card-00.netlify.app/"
-  },
-  {
-    "name": "Akash Dhar Dubey",
-    "occupation": "Web Developer",
-    "place": "India",
-    "bio": "Loves creating interactive UI components!",
-    "github_profile_url": "https://github.com/AKASHDHARDUBEY",
-    "project_netlify_link": "https://playful-pasca-51c6de.netlify.app/"
-  },
-  {
-    "name": "Ankit Jha",
-    "occupation": "Software Developer at juspay.in",
-    "place": "India",
-    "bio": "Passionate full-stack developer with expertise in modern web technologies. Love creating beautiful UI components and contributing to open source projects during Hacktoberfest!",
-    "github_profile_url": "https://github.com/ankit6686510",
-    "project_netlify_link": "https://glassmorphism-buttons-ankit.netlify.app/"
-  },
-  {
-    "name": "Anish Kalbhor",
-    "occupation": "Full Stack Developer",
-    "place": "Mumbai, India",
-    "bio": "I'm a Full Stack Developer with a strong foundation in web development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
-    "github_profile_url": "https://github.com/anishvkalbhor",
-    "project_netlify_link": "https://magic-toggle.netlify.app/"
-  },
-  {
-    "name": "Vedant Vijay",
-    "occupation": "Full-Stack Web Developer",
-    "place": "Chennai, India",
-    "bio": "likes to code and build things",
-    "github_profile_url": "https://github.com/vedantvijay",
-    "project_netlify_link": "https://sparkling-cranachan-917d19.netlify.app/"
-  },
-  {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "https://merry-syrniki-c09fee.netlify.app/"
-  },
-  {
-    "name": "Abhijeet Patil",
-    "occupation": "Full Stack Developer",
-    "place": "Mumbai, India",
-    "bio": "Crafting playful, interactive UI components with a love for clean code and modern web tech. Always exploring new ways to make the web more fun! 😄",
-    "github_profile_url": "https://github.com/abhijeetpatilrm",
-    "project_netlify_link": "https://abhijeetpatil-radiobutton.netlify.app/"
   },
   {
     "name": "Rakesh Sharma",
@@ -453,7 +365,31 @@
     "place": "Mumbai, India",
     "bio": "I'm an Applied Innovator and Google Student Ambassador with a strong foundation in full-stack development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
     "github_profile_url": "https://github.com/shahjash1634",
+    "project_netlify_link": "https://cradle-load.netlify.app/"
+  },
+  {
+    "name": "Jash Shah",
+    "occupation": "Applied Innovator",
+    "place": "Mumbai, India",
+    "bio": "I'm an Applied Innovator and Google Student Ambassador with a strong foundation in full-stack development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
+    "github_profile_url": "https://github.com/shahjash1634",
     "project_netlify_link": "https://storm-switch.netlify.app/"
+  },
+  {
+    "name": "Hari Thatikonda",
+    "occupation": "Software Developer",
+    "place": "Hyderabad, India",
+    "bio": "I am a Software Developer passionate about building scalable applications, solving challenging problems, and continuously improving through learning and innovation.",
+    "github_profile_url": "https://github.com/thughari",
+    "project_netlify_link": "https://thughari-card.netlify.app/"
+  },
+  {
+    "name": "Vishwas Naveen",
+    "occupation": "Student",
+    "place": "Bangalore, India",
+    "bio": "First-year AI/ML engineering student passionate about web development, hackathons, and building practical projects that solve real-world problems. Experienced in collaborating with teams on innovative ideas, from IoT prototypes to crowd management systems, while continuously exploring new technologies to grow as a developer.",
+    "github_profile_url": "https://github.com/sodium16",
+    "project_netlify_link": "https://sodium-button.netlify.app/"
   },
   {
     "name": "Srijit Dey",
@@ -464,12 +400,68 @@
     "project_netlify_link": "[https://retro-boot-loader.netlify.app/](https://retro-boot-loader.netlify.app/)"
   },
   {
+  "name": "Sumedh Udupa",
+  "occupation": "Full Stack Developer",
+  "place": "Bangalore, India",
+  "bio": "passionate about technology and open-source.",
+  "github_profile_url": "https://github.com/sumedhudupa",
+  "project_netlify_link": "https://weightlifter.netlify.app/"
+  },
+  {
+    "name": "Gunn Arora",
+    "occupation": "Software Developer Intern",
+    "place": "Punjab, India",
+    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
+    "github_profile_url": "https://github.com/gunn333",
+    "project_netlify_link": "https://starry-toggle.netlify.app"
+  },
+  {
     "name": "Gunn Arora",
     "occupation": "Software Developer Intern",
     "place": "Punjab, India",
     "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
     "github_profile_url": "https://github.com/gunn333",
     "project_netlify_link": "https://dreamy-trifle-c6e34b.netlify.app/"
+  },
+  {
+    "name": "Manroop Kaur",
+    "occupation": "Student",
+    "place": "Karnal, India",
+    "bio": "I am currently a final year student and passionate about learning new and challenging things.",
+    "github_profile_url": "https://github.com/manroop04",
+    "project_netlify_link": "https://scratch-card-00.netlify.app/"
+  },
+  {
+    "name": "Akash Dhar Dubey",
+    "occupation": "Web Developer",
+    "place": "India",
+    "bio": "Loves creating interactive UI components!",
+    "github_profile_url": "https://github.com/AKASHDHARDUBEY",
+    "project_netlify_link": "https://playful-pasca-51c6de.netlify.app/"
+  },
+  {
+    "name": "Ankit Jha",
+    "occupation": "Software Developer at juspay.in",
+    "place": "India",
+    "bio": "Passionate full-stack developer with expertise in modern web technologies. Love creating beautiful UI components and contributing to open source projects during Hacktoberfest!",
+    "github_profile_url": "https://github.com/ankit6686510",
+    "project_netlify_link": "https://glassmorphism-buttons-ankit.netlify.app/"
+  },
+  {
+    "name": "Anish Kalbhor",
+    "occupation": "Full Stack Developer",
+    "place": "Mumbai, India",
+    "bio": "I'm a Full Stack Developer with a strong foundation in web development, IoT, and deep learning. My passion is translating complex research into scalable, real-world solutions. I thrive on teaching, leading technical teams, and driving projects that bridge technology with social good.",
+    "github_profile_url": "https://github.com/anishvkalbhor",
+    "project_netlify_link": "https://magic-toggle.netlify.app/"
+  },
+  {
+    "name": "Vedant Vijay",
+    "occupation": "Full-Stack Web Developer",
+    "place": "Chennai, India",
+    "bio": "likes to code and build things",
+    "github_profile_url": "https://github.com/vedantvijay",
+    "project_netlify_link": "https://sparkling-cranachan-917d19.netlify.app/"
   },
   {
     "name": "Vedant Vijay",
@@ -488,43 +480,61 @@
     "project_netlify_link": "frabjous-sherbet-1521a2.netlify.app"
   },
   {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "https://tiny-sprite-7f2139.netlify.app/"
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"https://merry-syrniki-c09fee.netlify.app/"
+
   },
   {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "https://lighthearted-crisp-c0f9b6.netlify.app/"
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"https://tiny-sprite-7f2139.netlify.app/"
   },
   {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "scintillating-queijadas-06b34d.netlify.app"
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"https://lighthearted-crisp-c0f9b6.netlify.app/"
   },
   {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "monumental-dodol-871132.netlify.app"
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"scintillating-queijadas-06b34d.netlify.app"
+  },
+   {
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"monumental-dodol-871132.netlify.app"
   },
   {
-    "name": "Chaitanya Lahari",
-    "occupation": "student",
-    "place": "Guntur, India",
-    "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
-    "github_profile_url": "github.com/gurram-lahari",
-    "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
+    "name":"Chaitanya Lahari",
+    "occupation":"student",
+    "place":"Guntur, India",
+    "bio":"Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
+    "github_profile_url":"github.com/gurram-lahari",
+    "project_netlify_link":"https://cheery-valkyrie-67382a.netlify.app/"
+  },
+  {
+    "name":"Gandem VijayKumar",
+    "occupation":"student",
+    "place":"Visakhapatnam",
+    "bio":"I’m a passionate tech enthusiast always exploring the latest trends in Full-Stack Development, AI, IoT, and emerging technologies.",
+    "github_profile_url":"https://github.com/GandemVijaykumar",
+    "project_netlify_link":"https://jocular-tiramisu-1ac623.netlify.app/"
   }
 ]
+
