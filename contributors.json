@@ -526,5 +526,13 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
-  }
+  },
+  {
+  "name": "Adnan khan",
+  "occupation": "Student",
+  "place": "Karnataka,India",
+  "bio": "I am currently a bca final year student and passionate about MERN stack development.",
+  "github_profile_url": "https://github.com/Adnankhan107",
+  "project_netlify_link": "https://friendly-rugelach-c33d15.netlify.app/"
+}
 ]
