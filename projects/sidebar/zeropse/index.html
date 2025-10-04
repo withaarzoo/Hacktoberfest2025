@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Sidebar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-cube"></i>
+          <span class="logo-text">Dashboard</span>
+        </div>
+        <button class="toggle-btn" id="toggleBtn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-menu">
+        <div class="menu-item">
+          <a href="#" class="menu-link active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span class="menu-text">Home</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" data-page="dashboard">
+            <i class="fas fa-chart-line"></i>
+            <span class="menu-text">Dashboard</span>
+            <span class="menu-badge">New</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" id="productsToggle">
+            <i class="fas fa-box"></i>
+            <span class="menu-text">Products</span>
+            <i class="fas fa-chevron-down dropdown-icon"></i>
+          </a>
+          <div class="submenu" id="productsSubmenu">
+            <a href="#" class="menu-link" data-page="all-products">
+              <i class="fas fa-list"></i>
+              <span class="menu-text">All Products</span>
+            </a>
+            <a href="#" class="menu-link" data-page="add-product">
+              <i class="fas fa-plus"></i>
+              <span class="menu-text">Add Product</span>
+            </a>
+            <a href="#" class="menu-link" data-page="categories">
+              <i class="fas fa-tags"></i>
+              <span class="menu-text">Categories</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" id="ordersToggle">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="menu-text">Orders</span>
+            <i class="fas fa-chevron-down dropdown-icon"></i>
+          </a>
+          <div class="submenu" id="ordersSubmenu">
+            <a href="#" class="menu-link" data-page="all-orders">
+              <i class="fas fa-list"></i>
+              <span class="menu-text">All Orders</span>
+            </a>
+            <a href="#" class="menu-link" data-page="pending">
+              <i class="fas fa-clock"></i>
+              <span class="menu-text">Pending</span>
+            </a>
+            <a href="#" class="menu-link" data-page="completed">
+              <i class="fas fa-check-circle"></i>
+              <span class="menu-text">Completed</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" data-page="customers">
+            <i class="fas fa-users"></i>
+            <span class="menu-text">Customers</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" data-page="analytics">
+            <i class="fas fa-chart-pie"></i>
+            <span class="menu-text">Analytics</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" data-page="messages">
+            <i class="fas fa-envelope"></i>
+            <span class="menu-text">Messages</span>
+            <span class="menu-badge">5</span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" class="menu-link" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span class="menu-text">Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar">JD</div>
+          <div class="user-info">
+            <div class="user-name">John Doe</div>
+            <div class="user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="content-header">
+        <h1>Welcome to Dashboard</h1>
+        <p>Here's what's happening with your store today.</p>
+      </div>
+
+      <div class="card">
+        <h2>Overview</h2>
+        <p>
+          This is a modern sidebar navigation example with smooth animations and
+          a clean design. The sidebar features collapsible navigation, hover
+          effects, and a responsive design that works well on different screen
+          sizes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Features</h2>
+        <p>
+          Click on the menu items to see how the navigation works. The sidebar
+          can be collapsed to provide more space for the main content. It also
+          includes dropdown menus for nested navigation items.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Responsive Design</h2>
+        <p>
+          On smaller screens, the sidebar transforms into a slide-out menu that
+          can be toggled with a button. Try resizing your browser window to see
+          the responsive behavior.
+        </p>
+      </div>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
