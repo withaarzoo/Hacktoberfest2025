@@ -526,5 +526,14 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
-  }
+  },
+  {
+  "name": "Khushi Yadav",
+  "occupation": "Student at IIIT-Lucknow",
+  "place": "India",
+  "bio": "Loves creating UI components and exploring open source!",
+  "github_profile_url": "https://github.com/khushi964",
+  "project_netlify_link": "https://khushi964.netlify.app/"
+}
+
 ]
