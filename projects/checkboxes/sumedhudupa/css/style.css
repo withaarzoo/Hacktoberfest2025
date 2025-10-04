@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox-wrapper {
+    display: inline-block;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-box {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.checkbox-label:hover .checkbox-box {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-label:hover .checkbox-box::before {
+    transform: scale(1);
+}
+
+.checkmark {
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.checkbox-input:checked ~ .checkbox-label .checkbox-box {
+    background: #fff;
+    border-color: #fff;
+    animation: rotateCheckbox 0.6s ease-in-out;
+}
+
+.checkbox-input:not(:checked) ~ .checkbox-label .checkbox-box {
+    animation: rotateCheckboxReverse 0.6s ease-in-out;
+}
+
+.checkbox-input:checked ~ .checkbox-label .checkmark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox-input:checked ~ .checkbox-label .checkmark path {
+    stroke: #764ba2;
+}
+
+@keyframes rotateCheckbox {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes rotateCheckboxReverse {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(-180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(-360deg) scale(1);
+    }
+}
+
+.checkbox-text {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.checkbox-label:hover .checkbox-text {
+    transform: translateX(5px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .checkbox-box {
+        width: 45px;
+        height: 45px;
+    }
+
+    .checkmark {
+        width: 25px;
+        height: 25px;
+    }
+
+    .checkbox-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkbox-box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .checkmark {
+        width: 22px;
+        height: 22px;
+    }
+
+    .checkbox-text {
+        font-size: 16px;
+    }
+}
