@@ -460,8 +460,8 @@
     "occupation": "Web Developer",
     "place": "Kolkata, India",
     "bio": "A passionate web developer with a knack for creating interactive applications.",
-    "github_profile_url": "[https://github.com/zeropse](https://github.com/zeropse)",
-    "project_netlify_link": "[https://retro-boot-loader.netlify.app/](https://retro-boot-loader.netlify.app/)"
+    "github_profile_url": "https://github.com/zeropse",
+    "project_netlify_link": "https://retro-boot-loader.netlify.app/"
   },
   {
     "name": "Gunn Arora",
@@ -526,5 +526,13 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
+  },
+  {
+    "name": "Srijit Dey",
+    "occupation": "Web Developer",
+    "place": "Kolkata, India",
+    "bio": "A passionate web developer with a knack for creating interactive applications.",
+    "github_profile_url": "https://github.com/zeropse",
+    "project_netlify_link": "https://modern-sidebar.netlify.app/"
   }
 ]
