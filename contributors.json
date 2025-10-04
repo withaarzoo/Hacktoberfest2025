@@ -1,5 +1,13 @@
 [
   {
+    "name": "Neeraj Sharma",
+    "occupation": "Student at NIT Jamshedpur",
+    "place": "Jamshedpur, India",
+    "bio": "Blending Technology with Artistry.",
+    "github_profile_url": "https://github.com/NeerajSh-16",
+    "project_netlify_link": "https://lucent-pastelito-0ec746.netlify.app/"
+  },
+  {
     "name": "Md Aarzoo Islam",
     "occupation": "Founder at oxzeen.com",
     "place": "Kolkata, India",
