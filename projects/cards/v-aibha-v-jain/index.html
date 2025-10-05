@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Card Carousel — Day Cycle</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<div class="stage" id="stage">
+            <div class="bg bg-sunrise" data-state="sunrise"></div>
+            <div class="bg bg-bright" data-state="bright"></div>
+            <div class="bg bg-sunset" data-state="sunset"></div>
+            <div class="bg bg-night"  data-state="night"></div>
+
+            <div class="sky-elements" aria-hidden="true">
+                <div class="sun" id="sun"></div>
+                <div class="moon" id="moon" aria-hidden="true"></div>
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+                <div class="stars" id="stars"></div>
+            </div>
+
+            <div class="card" id="card">
+                <div class="card-inner" id="cardInner">
+                    <h1 id="cardTitle">Card 1</h1>
+                    <p id="cardDesc">A beautiful sunrise to begin the cycle.</p>
+                    <div class="meta" id="cardMeta">Sunrise</div>
+                </div>
+            </div>
+
+            <div class="nav left">
+                <button class="btn" id="prev" aria-label="Previous">&#x2190;</button>
+            </div>
+            <div class="nav right">
+                <button class="btn" id="next" aria-label="Next">&#x2192;</button>
+            </div>
+
+            <div class="pager" id="pager"></div>
+            <div class="hint">use ← →</div>
+        </div>
+		<script src="main.js"></script>
+	</body>
+</html>
+
