@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Input Boxes</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- For Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Modern Input Boxes</h1>
+
+      <!-- 1. Standard Text Input with Floating Label -->
+      <div class="input-group">
+        <input
+          type="text"
+          id="fullname"
+          class="input-field"
+          placeholder=" "
+          required
+        />
+        <label for="fullname" class="input-label">Full Name</label>
+        <span class="input-helper-text">e.g., John Doe</span>
+      </div>
+
+      <!-- 2. Email Input with Validation -->
+      <div class="input-group" id="email-group">
+        <input
+          type="email"
+          id="email"
+          class="input-field"
+          placeholder=" "
+          required
+        />
+        <label for="email" class="input-label">Email Address</label>
+        <i class="input-icon fa-solid fa-envelope"></i>
+        <span class="input-helper-text">We'll never share your email.</span>
+      </div>
+
+      <!-- 3. Password Input with Toggle Visibility -->
+      <div class="input-group">
+        <input
+          type="password"
+          id="password"
+          class="input-field"
+          placeholder=" "
+          minlength="8"
+          required
+        />
+        <label for="password" class="input-label">Password</label>
+        <button type="button" class="password-toggle">
+          <i class="fa-solid fa-eye-slash"></i>
+        </button>
+        <span class="input-helper-text">Must be at least 8 characters.</span>
+      </div>
+
+      <!-- 4. Search Input with Clear Button -->
+      <div class="input-group">
+        <input type="search" id="search" class="input-field" placeholder=" " />
+        <label for="search" class="input-label">Search...</label>
+        <i class="input-icon fa-solid fa-magnifying-glass"></i>
+        <button type="button" class="clear-button">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+
+      <!-- 5. Textarea with Character Counter -->
+      <div class="input-group">
+        <textarea
+          id="message"
+          class="input-field"
+          placeholder=" "
+          maxlength="100"
+          rows="3"
+        ></textarea>
+        <label for="message" class="input-label">Your Message</label>
+        <span class="char-counter"><span id="char-count">0</span> / 100</span>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

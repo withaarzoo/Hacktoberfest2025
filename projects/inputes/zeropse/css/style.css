@@ -1,0 +1,171 @@
+/* --- Global Styles & Variables --- */
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --warning-color: #ff9800;
+  --text-color: #333;
+  --label-color: #999;
+  --border-color: #ccc;
+  --bg-color: #f4f4f9;
+  --input-bg: #ffffff;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background: var(--input-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Input Group --- */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  transition: var(--transition);
+  box-sizing: border-box; /* Important for padding and width */
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+
+/* --- Floating Label --- */
+.input-label {
+  position: absolute;
+  left: 0.75rem;
+  top: 1rem;
+  font-size: 1rem;
+  color: var(--label-color);
+  pointer-events: none; /* Allows clicks to go through to the input */
+  transition: var(--transition);
+  background-color: var(--input-bg);
+  padding: 0 0.25rem;
+}
+
+/* The Magic: Float the label when input is focused or has content */
+.input-field:focus ~ .input-label,
+.input-field:not(:placeholder-shown) ~ .input-label {
+  top: -0.6rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--primary-color);
+}
+
+/* --- Icons --- */
+.input-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--label-color);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+/* --- Helper Text --- */
+.input-helper-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--label-color);
+}
+
+/* --- Validation States --- */
+.input-group.success .input-field {
+  border-color: var(--success-color);
+}
+.input-group.success .input-field:focus {
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+.input-group.success .input-helper-text {
+  color: var(--success-color);
+}
+
+.input-group.error .input-field {
+  border-color: var(--error-color);
+}
+.input-group.error .input-field:focus {
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+}
+.input-group.error .input-helper-text {
+  color: var(--error-color);
+}
+
+/* --- Interactive Buttons --- */
+.password-toggle,
+.clear-button {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--label-color);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  transition: var(--transition);
+}
+
+.password-toggle:hover,
+.clear-button:hover {
+  color: var(--text-color);
+}
+
+/* Hide clear button when input is empty */
+.input-field:placeholder-shown ~ .clear-button {
+  visibility: hidden;
+}
+
+/* --- Textarea & Character Counter --- */
+textarea.input-field {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.char-counter {
+  position: absolute;
+  right: 0.75rem;
+  bottom: -1.25rem;
+  font-size: 0.75rem;
+  color: var(--label-color);
+}
