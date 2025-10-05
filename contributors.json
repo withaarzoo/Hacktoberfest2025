@@ -334,5 +334,13 @@
     "bio": "Crafting visually stunning, interactive, and accessible web components. Passionate about modern CSS, micro-interactions, and elevating user experience through design.",
     "github_profile_url": "https://github.com/abhijeetpatilrm",
     "project_netlify_link": "https://abhijeet-patil-button.netlify.app/"
+  },
+  {
+    "name": "Abhijeet Patil",
+    "occupation": "Full Stack Developer",
+    "place": "Mumbai, India",
+    "bio": "Crafting visually stunning, interactive, and accessible web components. Passionate about modern CSS, micro-interactions, and elevating user experience through design.",
+    "github_profile_url": "https://github.com/abhijeetpatilrm",
+    "project_netlify_link": "https://abhijeet-patil-card.netlify.app/"
   }
 ]
