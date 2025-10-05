@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Step Wizard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="progress-header">
+            <ul class="step-indicators">
+                <li class="step-indicator active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Details</span>
+                </li>
+                <li class="step-indicator" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Address</span>
+                </li>
+                <li class="step-indicator" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Confirm</span>
+                </li>
+            </ul>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="form-body">
+            <div class="form-stages-wrapper">
+                
+                <div class="form-stage" data-stage="1">
+                    <div class="form-content">
+                        <h2>Personal Details</h2>
+                        <p>Let's start with some basic information about you.</p>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" placeholder="John Doe" required>
+                            <span class="error-message">Please enter your full name</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <span class="error-message">Please enter a valid email address</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required>
+                            <span class="error-message">Please enter your phone number</span>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn btn-next" data-next="2">Next</button>
+                    </div>
+                </div>
+
+              
+                <div class="form-stage" data-stage="2">
+                    <div class="form-content">
+                        <h2>Address Information</h2>
+                        <p>Where should we reach you?</p>
+                        
+                        <div class="form-group">
+                            <label for="street">Street Address *</label>
+                            <input type="text" id="street" placeholder="123 Main Street" required>
+                            <span class="error-message">Please enter your street address</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" placeholder="New York" required>
+                            <span class="error-message">Please enter your city</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="zipCode">ZIP Code *</label>
+                            <input type="text" id="zipCode" placeholder="10001" required>
+                            <span class="error-message">Please enter your ZIP code</span>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn btn-back" data-prev="1">Back</button>
+                        <button class="btn btn-next" data-next="3">Next</button>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Confirmation -->
+                <div class="form-stage" data-stage="3">
+                    <div class="form-content">
+                        <h2>Confirm Your Details</h2>
+                        <p>Please review your information before submitting.</p>
+                        
+                        <div class="confirmation-box">
+                            <h3>Personal Details</h3>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Name:</span>
+                                <span class="confirmation-value" id="confirmName">-</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Email:</span>
+                                <span class="confirmation-value" id="confirmEmail">-</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Phone:</span>
+                                <span class="confirmation-value" id="confirmPhone">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="confirmation-box">
+                            <h3>Address Information</h3>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Street:</span>
+                                <span class="confirmation-value" id="confirmStreet">-</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">City:</span>
+                                <span class="confirmation-value" id="confirmCity">-</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">ZIP Code:</span>
+                                <span class="confirmation-value" id="confirmZip">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn btn-back" data-prev="2">Back</button>
+                        <button class="btn btn-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
