@@ -1,5 +1,13 @@
 [
   {
+    "name": "Vaibhav Jain",
+    "occupation": "Software Engineer",
+    "place": "Bangalore, India",
+    "bio": "A Software Developer with experience in full-stack development, cloud technologies, and machine learning. Contributed to more than 10 full-stack and AI projects, delivering scalable applications and collaborating effectively within team environments.",
+    "github_profile_url": "https://github.com/v-aibha-v-jain",
+    "project_netlify_link": "https://day-and-night-cycle-card.netlify.app/"
+  },
+  {
     "name": "Md Aarzoo Islam",
     "occupation": "Founder at oxzeen.com",
     "place": "Kolkata, India",
