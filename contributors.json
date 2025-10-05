@@ -606,6 +606,14 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Madhusudan",
+    "occupation": "Student",
+    "place": "Bengaluru, India",
+    "bio": "Passionate about AI, full stack development, and creating things that think.",
+    "github_profile_url": "https://github.com/keikurono7",
+    "project_netlify_link": "https://glassmorphic-radio-button.netlify.app/"
   }
 ]
 
