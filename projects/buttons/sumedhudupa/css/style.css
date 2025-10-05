@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+}
+
+.spirit-button {
+    padding: 20px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.spirit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.spirit-button:active {
+    transform: scale(0.95);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Spirit particle animation */
+.spirit-particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(102, 126, 234, 0.5) 50%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spiritEscape 1.5s ease-out forwards;
+    filter: blur(2px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes spiritEscape {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Trail effect */
+.spirit-trail {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: trailFade 1s ease-out forwards;
+    filter: blur(1px);
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .spirit-button {
+        padding: 15px 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .spirit-button {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
