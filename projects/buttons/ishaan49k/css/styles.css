@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #1e1e2f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fancy-button {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.fancy-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
+}
+
+.fancy-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fancy-button i {
+  font-size: 20px;
+}
