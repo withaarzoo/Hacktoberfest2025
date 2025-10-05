@@ -1,0 +1,13 @@
+:root{--bg:#0f1724;--panel:#0b1220;--accent:#7c3aed}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg),#071021);color:#e6eef8;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.center{text-align:center;padding:2rem}
+h1{font-weight:600;margin-bottom:1.5rem}
+.neon-btn{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06);padding:0.75rem 1.25rem;border-radius:10px;color:var(--accent);font-weight:700;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(124,58,237,0.12),inset 0 1px 0 rgba(255,255,255,0.02);transition:transform .14s ease,box-shadow .14s ease}
+.neon-btn::after{content:'';position:absolute;left:-40%;top:-60%;width:200%;height:220%;background:radial-gradient(closest-side,rgba(124,58,237,0.18),transparent 40%);transform:rotate(20deg);transition:transform .5s ease}
+.neon-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(124,58,237,0.18),inset 0 1px 0 rgba(255,255,255,0.03)}
+.neon-btn:hover::after{transform:translateX(40%) rotate(20deg)}
+.neon-btn:active{transform:translateY(-1px)}
+#msg{margin-top:1rem;color:#bcd7ff;font-size:0.95rem}
+
+@media (max-width:420px){.neon-btn{width:100%}}
