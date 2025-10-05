@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Example</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="accordion" id="accordion">
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>What is HTML?</span>
+            <svg stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+        <div class="accordion-content">
+            <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages and web applications.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>What is CSS?</span>
+            <svg stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+        <div class="accordion-content">
+            <p>CSS (Cascading Style Sheets) is used to control the layout and appearance of web pages — like colors, fonts, and spacing.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>What is JavaScript?</span>
+            <svg stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+        <div class="accordion-content">
+            <p>JavaScript is a programming language that lets you create interactive and dynamic content on websites.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const headers = document.querySelectorAll('.accordion-header');
+
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            const open = content.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('open');
+            });
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                h.classList.remove('active');
+            });
+
+            // Open current
+            if (!open) {
+                header.classList.add('active');
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
