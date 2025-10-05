@@ -1,0 +1,105 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  perspective: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 320px;
+  max-width: 100%;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+  text-align: center;
+  color: #fff;
+  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #38bdf8, #9333ea, #f43f5e, #38bdf8);
+  animation: spin 6s linear infinite;
+  z-index: -1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 15px;
+  background: rgba(15, 23, 42, 0.9);
+  z-index: -1;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.card p {
+  font-size: 1rem;
+  margin: 12px 0 20px;
+  opacity: 0.85;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #9333ea;
+  color: #fff;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: 90%;
+    padding: 20px;
+  }
+  .card h2 {
+    font-size: 1.3rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+  }
+  .btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}

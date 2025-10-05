@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightning Bulb Toggle Switch</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <input type="checkbox" id="bulb-toggle" class="toggle-input">
+
+    <label for="bulb-toggle" class="toggle-label">
+      <i class="ri-lightbulb-line bulb"></i>
+
+      <div class="switch">
+        <svg class="lightning" width="40" height="20" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
+          <path class="bolt" id="bolt1" d="M0 10 L10 2 L15 15 L25 5 L30 18 L40 10" />
+          <path class="bolt" id="bolt2" d="M0 12 L8 20 L18 8 L28 19 L33 5 L40 12" />
+          <path class="bolt" id="bolt3" d="M0 8 L12 18 L22 3 L32 15 L35 8 L40 9" />
+        </svg>
+        <div class="handle"></div>
+      </div>
+    </label>
+
+    <h1>Storm Switch</h1>
+    <p>Click the switch to power the light.</p>
+  </div>
+
+  <script>
+    const toggleInput = document.getElementById('bulb-toggle');
+    const lightningSvg = document.querySelector('.lightning');
+
+    toggleInput.addEventListener('change', () => {
+      // Determine which animation to play based on the checkbox state
+      const animationClass = toggleInput.checked ? 'animate-on' : 'animate-off';
+
+      // Add the correct animation class to the SVG container
+      lightningSvg.classList.add(animationClass);
+
+      // After 500ms (the duration of the animation), remove the class.
+      // This makes the animation ready to be triggered again on the next click.
+      setTimeout(() => {
+        lightningSvg.classList.remove(animationClass);
+      }, 500);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+/* Global Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.component-container {
+    text-align: center;
+}
+
+/* 3D Pressed Button Styles */
+.btn-3d {
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #fff;
+    background: #ff6ec4;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px #d44ba3;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-3d:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #d44ba3;
+}

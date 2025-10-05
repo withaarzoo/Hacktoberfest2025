@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 90vw;
+    max-width: 400px;
+    height: 50vh;
+    max-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    border-radius: 5%;
+}
+
+.box {
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    width: 102%;
+    height: 102%;
+    overflow: visible;
+    background: #222;
+    color: white;
+    padding: 5%;
+    box-sizing: border-box;
+    border-radius: 4.5%;
+}
+
+.glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #ff80df;
+    margin-bottom: 1vh;
+}
+
+.content p {
+    font-size: clamp(12px, 1.5vw, 16px);
+    line-height: 1.5;
+    margin-bottom: 2vh;
+    color: #ddd;
+}
+
+.content button {
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 0.5vw;
+    background: #ff007f;
+    color: white;
+    font-size: clamp(12px, 1.2vw, 14px);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.content button::before {
+    content: '';
+    position: absolute;
+    top: -0.5vh;
+    left: -0.5vw;
+    right: -0.5vw;
+    bottom: -0.5vh;
+    background: linear-gradient(90deg, #ff007f 0%, #8000ff 50%, #ff007f 100%);
+    border-radius: 1vw;
+    filter: blur(0.8vw);
+    opacity: 0.5;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.content button:hover::before {
+    opacity: 1;
+}
+
+.content button:hover {
+    transform: scale(1.05);
+}
+
+.box::after, .box::before {
+    content: '';
+    position: absolute;
+    inset: -0.5%;
+    background: conic-gradient(
+        from var(--angle),
+        #ff007f 0deg,
+        #8000ff 90deg,
+        #ff007f 180deg,
+        #8000ff 270deg,
+        #ff007f 360deg
+    );
+    border-radius: 4.5%;
+    z-index: -1;
+}
+
+.box::before {
+    z-index: -2;
+    filter: blur(1vw);
+    opacity: 0.4;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.box::after, .box::before {
+    animation: glowing-border 4s linear infinite;
+}
+
+@keyframes glowing-border {
+    from { --angle: 0deg; }
+    to   { --angle: 360deg; }
+}

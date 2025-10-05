@@ -1,0 +1,136 @@
+/* Body styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* white background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* full viewport height */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Center wrapper */
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Card container */
+  .card {
+    width: 350px;
+    padding: 30px;
+    background-color: #fff; /* white card */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Card title */
+  .card-title {
+    margin-bottom: 20px;
+    color: #185ee0;
+  }
+  
+  /* Tabs wrapper */
+  .tabs {
+    display: flex;
+    position: relative;
+    background-color: #f0f4ff;
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  /* Hide radio buttons */
+  .tabs input[type="radio"] {
+    display: none;
+  }
+  
+  /* Tab buttons */
+  .tab {
+    flex: 1;
+    position: relative;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .tab:hover {
+    color: #185ee0;
+  }
+  
+  .notification {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border-radius: 50%;
+    background-color: #e6eef9;
+    color: #185ee0;
+    font-weight: bold;
+  }
+  
+  /* Checked state */
+  .tabs input[type="radio"]:checked + label {
+    color: #185ee0;           /* same as glider color for contrast */
+    font-weight: 600;         /* slightly bolder */
+    z-index: 2;               /* stay on top of glider */
+  }
+  
+  
+  .tabs input[type="radio"]:checked + label .notification {
+    background-color: #fff;
+    color: #185ee0;
+  }
+  
+  /* Glider highlight */
+  /* Glider highlight with opacity */
+.glider {
+    position: absolute;
+    height: 40px;
+    width: 33.33%;
+    background-color: #185ee0;
+    border-radius: 50px;
+    top: 0;
+    left: 0;
+    z-index: 1;               /* keep it below the text */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity: 0.2;             /* makes it semi-transparent */
+  }
+  
+  
+  /* Move glider according to tab */
+  #radio-1:checked ~ .glider { transform: translateX(0%); }
+  #radio-2:checked ~ .glider { transform: translateX(100%); }
+  #radio-3:checked ~ .glider { transform: translateX(200%); }
+  
+  /* Tab content */
+  .tab-content {
+    padding: 15px;
+    background-color: #f8faff;
+    border-radius: 10px;
+    color: #555;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 500px) {
+    .card { padding: 20px; width: 90%; }
+    .tabs { padding: 3px; }
+    .tab { font-size: 0.8rem; }
+    .glider { height: 35px; }
+  }
+  

@@ -1,0 +1,84 @@
+:root {
+  --liquid-blue: #3498db;
+  --white: #ffffff;
+  --eerie-brown: #5a3e2b;
+  --flowy-green: #2ecc71;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--liquid-blue);
+  transition: background-color 0.5s ease;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* The button's initial state */
+.transition-button {
+  position: relative;
+  z-index: 1000;
+  padding: 20px 40px;
+  font-size: 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.5s ease;
+  font-family: 'Special Elite', monospace;
+  color: var(--eerie-brown);
+  background: var(--white);
+  border: 3px solid var(--eerie-brown);
+}
+
+.transition-button:hover {
+  transform: scale(1.05);
+}
+
+/* This makes sure the SVG filter is defined but not visible on the page */
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* The overlay that the watercolor effect is applied to */
+.transition-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 150vmax;
+  /* Start extra large to cover screen */
+  height: 150vmax;
+  transform: translate(-50%, -50%) scale(1);
+  /* Hidden by default */
+  border-radius: 50%;
+  background-color: var(--white);
+  /* The color the page will become */
+  z-index: 999;
+  display: none;
+  /* Hidden until click */
+
+  /* This is the magic line that applies our SVG filter */
+  filter: url(#watercolor-bleed);
+}
+
+
+/* --- Final State After Transition --- */
+
+body.theme-white {
+  background-color: var(--white);
+}
+
+body.theme-white .transition-button {
+  font-family: 'Pacifico', cursive;
+  color: var(--flowy-green);
+  background: var(--liquid-blue);
+  border-color: var(--liquid-blue);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,64 @@
+/* Full page + default background */
+body {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 1s ease;
+  background: linear-gradient(120deg, #f6d365, #fda085);
+}
+
+/* Radio group layout */
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+/* High-level radio buttons */
+.hl-radio {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 14px 36px;
+  background: rgba(255,255,255,0.2); /* neutral background */
+  color: #fff; /* text stays visible */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+/* Hide native radio input */
+.hl-radio input {
+  display: none;
+}
+
+/* Hover effect (unselected buttons) */
+.hl-radio:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+/* Checked button highlight */
+.hl-radio input:checked + span {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 14px 36px;
+  border-radius: 50px;
+  color: #fff; /* text stays the same */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.2) inset;
+  transition: all 0.4s ease;
+}
+
+/* Text layer */
+.hl-radio span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: all 0.4s ease;
+}

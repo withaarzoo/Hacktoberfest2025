@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Cookie Card - Redesigned</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  canvas {
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<canvas id="cookieCanvas" width="320" height="220"></canvas>
+
+<script>
+const canvas = document.getElementById('cookieCanvas');
+const ctx = canvas.getContext('2d');
+
+// Helper: Draw rounded rectangle
+function drawRoundedRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Draw card with glass effect
+ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+drawRoundedRect(0, 0, canvas.width, canvas.height, 20);
+ctx.fill();
+
+// Draw card shadow (outer glow)
+ctx.shadowColor = 'rgba(0,0,0,0.4)';
+ctx.shadowBlur = 20;
+ctx.fill();
+
+// Reset shadow for text
+ctx.shadowBlur = 0;
+
+// Draw gradient circle accent
+const circleGradient = ctx.createLinearGradient(0, 0, 150, 0);
+circleGradient.addColorStop(0, 'rgba(142, 110, 255, 0.6)');
+circleGradient.addColorStop(1, 'rgba(208, 195, 255, 0.6)');
+ctx.fillStyle = circleGradient;
+ctx.beginPath();
+ctx.arc(270, -30, 90, 0, Math.PI * 2);
+ctx.fill();
+
+// Heading
+ctx.fillStyle = 'rgba(255,255,255,0.9)';
+ctx.font = 'bold 26px Arial';
+ctx.fillText('Cookies.', 20, 60);
+
+// Description
+ctx.font = '14px Arial';
+ctx.fillStyle = 'rgba(255,255,255,0.8)';
+ctx.fillText('By using this website you automatically', 20, 90);
+ctx.fillText('accept that we use cookies.', 20, 110);
+
+// Link
+ctx.fillStyle = '#e0d4ff';
+ctx.fillText('What for?', 20, 135);
+
+// Draw button with gradient
+const buttonX = 20;
+const buttonY = 150;
+const buttonWidth = 140;
+const buttonHeight = 40;
+const buttonRadius = 12;
+
+const buttonGradient = ctx.createLinearGradient(buttonX, buttonY, buttonX + buttonWidth, buttonY);
+buttonGradient.addColorStop(0, '#8c6aff');
+buttonGradient.addColorStop(1, '#a27cff');
+
+ctx.fillStyle = buttonGradient;
+drawRoundedRect(buttonX, buttonY, buttonWidth, buttonHeight, buttonRadius);
+ctx.fill();
+
+// Button text
+ctx.fillStyle = 'white';
+ctx.font = 'bold 16px Arial';
+ctx.fillText('Understood', buttonX + 20, buttonY + 26);
+
+// Hover effect
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  // Redraw button on hover
+  ctx.clearRect(buttonX - 2, buttonY - 2, buttonWidth + 4, buttonHeight + 4);
+  ctx.fillStyle = (x > buttonX && x < buttonX + buttonWidth && y > buttonY && y < buttonY + buttonHeight)
+                  ? '#764cff'
+                  : buttonGradient;
+  drawRoundedRect(buttonX, buttonY, buttonWidth, buttonHeight, buttonRadius);
+  ctx.fill();
+
+  ctx.fillStyle = 'white';
+  ctx.font = 'bold 16px Arial';
+  ctx.fillText('Understood', buttonX + 20, buttonY + 26);
+});
+
+// Button click action
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  if (x > buttonX && x < buttonX + buttonWidth && y > buttonY && y < buttonY + buttonHeight) {
+    alert('Cookies accepted!');
+  }
+});
+</script>
+</body>
+</html>

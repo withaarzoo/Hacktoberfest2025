@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Loader</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #0f0f1d, #000);
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="loader"></canvas>
+  <script>
+    const canvas = document.getElementById("loader");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let angle = 0;
+    let rings = [];
+
+    class Ring {
+      constructor(radius, color, speed) {
+        this.radius = radius;
+        this.color = color;
+        this.speed = speed;
+        this.offset = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.offset += this.speed;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, this.radius + Math.sin(this.offset) * 10, 0, Math.PI * 2);
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 4;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 20;
+        ctx.stroke();
+      }
+    }
+
+    // Loader rings setup
+    const colors = ["#ff00ff", "#00ffff", "#ff9900"];
+    for (let i = 0; i < 3; i++) {
+      rings.push(new Ring(50 + i * 40, colors[i], 0.03 + i * 0.01));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Central pulsing orb
+      let orbRadius = 30 + Math.sin(angle * 3) * 8;
+      let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 5, canvas.width/2, canvas.height/2, orbRadius);
+      gradient.addColorStop(0, "#ffffff");
+      gradient.addColorStop(1, "#9900ff");
+
+      ctx.beginPath();
+      ctx.arc(canvas.width/2, canvas.height/2, orbRadius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.shadowColor = "#ff00ff";
+      ctx.shadowBlur = 40;
+      ctx.fill();
+
+      // Animate rings
+      rings.forEach(ring => {
+        ring.update();
+        ring.draw();
+      });
+
+      angle += 0.02;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Boot Loader</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-theme="dark">
+    <!-- CRT Effect Overlay -->
+    <div class="crt-effect"></div>
+
+    <!-- Boot Container -->
+    <div class="boot-container">
+      <!-- Boot Messages -->
+      <div class="boot-messages" id="bootMessages"></div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-label">
+          <span>SYSTEM INITIALIZATION</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

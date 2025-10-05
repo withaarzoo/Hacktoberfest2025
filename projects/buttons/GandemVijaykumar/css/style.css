@@ -1,0 +1,225 @@
+:root {
+    --glow-color: hsl(286, 100%, 60%);
+    --glow-spread-color: hsla(286, 100%, 60%, 0.7);
+    --enhanced-glow-color: hsl(286, 100%, 70%);
+    --btn-color: hsl(0, 0%, 95%);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121217;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px hsla(0, 0%, 100%, 0.5);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.button-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem 2rem;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.button-title {
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #a7a7a7;
+}
+
+/* --- Base Button Style --- */
+.btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--btn-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1em 2em;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+/* --- 1. NEON GRADIENT BUTTON (Glow, Color Shifting) --- */
+.btn-neon {
+    border: 3px solid var(--btn-color);
+    border-radius: 50px;
+    text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.5), 0 0 0.25em var(--glow-color);
+    box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color);
+}
+
+.btn-neon::before {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--glow-color);
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1.2em);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-neon:hover {
+    color: #121217;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em 0.25em var(--glow-spread-color),
+                0 0 2em 1em var(--glow-spread-color),
+                inset 0 0 0.5em 0.25em var(--enhanced-glow-color);
+}
+
+.btn-neon:hover::before {
+    opacity: 0.7;
+}
+
+.btn-neon:active {
+    transform: scale(0.95);
+}
+
+/* --- 2. 3D FLIP BUTTON (3D Perspective) --- */
+.btn-flip-container {
+    perspective: 1000px;
+}
+.btn-flip {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    width: 180px;
+}
+.btn-flip .front, .btn-flip .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0; left: 0;
+    border-radius: 8px;
+}
+.btn-flip .front {
+    background: #4f46e5;
+    color: #fff;
+}
+.btn-flip .back {
+    background: #059669;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+.btn-flip-container:hover .btn-flip {
+    transform: rotateY(180deg);
+}
+
+/* --- 3. DYNAMIC BORDER BUTTON (Border Animation) --- */
+.btn-border-animate {
+    background-color: transparent;
+    color: #fff;
+}
+.btn-border-animate::before,
+.btn-border-animate::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: transparent;
+    transition: all 0.4s ease;
+}
+.btn-border-animate::before {
+    top: -2px; left: -2px;
+    border-top: 2px solid #0ea5e9;
+    border-left: 2px solid #0ea5e9;
+}
+.btn-border-animate::after {
+    bottom: -2px; right: -2px;
+    border-bottom: 2px solid #0ea5e9;
+    border-right: 2px solid #0ea5e9;
+}
+.btn-border-animate:hover::before,
+.btn-border-animate:hover::after {
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+
+/* --- 4. RIPPLE BUTTON --- */
+.btn-ripple {
+    background-color: #d946ef;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.btn-ripple .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple-effect 0.6s linear;
+}
+@keyframes ripple-effect {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+/* --- 5. MORPHING & FLOATING BUTTON (Shape & Text Animation) --- */
+.btn-morph {
+    border-radius: 50px;
+    background: linear-gradient(45deg, #f59e0b, #ef4444);
+    width: 150px;
+    height: 60px;
+    animation: float 3s ease-in-out infinite;
+}
+.btn-morph .text-container {
+    display: flex;
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.btn-morph .text {
+    transition-delay: 0.75s;
+}
+.btn-morph:hover {
+    width: 60px; /* Morph to circle */
+    border-radius: 50%;
+    animation-play-state: paused;
+}
+.btn-morph:hover .text-container {
+    width: 100%;
+    transform: rotate(360deg);
+}
+.btn-morph:hover .text {
+    opacity: 0;
+    transition-delay: 0s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}

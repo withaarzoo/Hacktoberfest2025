@@ -1,0 +1,129 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2c2a3a;
+  font-family: 'Poppins', sans-serif;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.bulb {
+  font-size: 60px;
+  color: #6c757d;
+  transition: all 0.4s ease;
+}
+
+/* The switch track */
+.switch {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #4a475c;
+  transition: background-color 0.4s ease;
+  overflow: hidden;
+}
+
+/* The switch handle - FIT AND BORDER FIXED */
+.handle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+/* --- SVG Lightning Styling --- */
+.lightning {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  /* Center the start of the lightning */
+  z-index: 1;
+  overflow: visible;
+}
+
+.bolt {
+  fill: none;
+  stroke: #ffd700;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 85;
+  stroke-dashoffset: 85;
+  /* Path is hidden by default */
+}
+
+/* --- The "ON" State --- */
+.toggle-input:checked+.toggle-label .bulb {
+  color: #ffc83d;
+  filter: drop-shadow(0 0 8px #ffc83d) drop-shadow(0 0 16px #ffc83d);
+}
+
+.toggle-input:checked+.toggle-label .switch {
+  background-color: #8e44ad;
+}
+
+.toggle-input:checked+.toggle-label .handle {
+  transform: translateX(40px);
+}
+
+/* --- Animation Control Classes --- */
+.lightning.animate-on .bolt {
+  animation: draw-flash 0.5s ease-in-out reverse;
+}
+
+.lightning.animate-off .bolt {
+  animation: draw-flash 0.5s ease-in-out;
+}
+
+/* Stagger the animation of each bolt */
+.lightning.animate-on #bolt2,
+.lightning.animate-off #bolt2 {
+  animation-delay: 0.05s;
+}
+
+.lightning.animate-on #bolt3,
+.lightning.animate-off #bolt3 {
+  animation-delay: 0.1s;
+}
+
+/* --- Keyframe for the "Flash" Effect --- */
+@keyframes draw-flash {
+  0% {
+    stroke-dashoffset: 85;
+  }
+
+  50% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -85;
+    /* Continues moving to disappear */
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumbbell Toggle - Vertical Strength Toggle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="gym-background">
+        <div class="container">
+            <h1>🏋️ DUMBBELL TOGGLE</h1>
+            <p class="subtitle">Lift It Up, Bring It Down</p>
+
+            <div class="showcase-grid">
+                <div class="dumbbell-card">
+                    <h2>Classic Strength</h2>
+                    <label class="dumbbell-toggle">
+                        <input type="checkbox" class="dumbbell-input">
+                        <div class="dumbbell-track">
+                            <div class="dumbbell-handle"></div>
+                            <div class="dumbbell-weight">
+                                <div class="weight-plate"></div>
+                                <div class="weight-plate"></div>
+                                <div class="weight-ring"></div>
+                            </div>
+                        </div>
+                        <div class="lift-label">
+                            <span class="down-label">DOWN</span>
+                            <span class="up-label">UP</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="dumbbell-card">
+                    <h2>Power Mode</h2>
+                    <label class="dumbbell-toggle power">
+                        <input type="checkbox" class="dumbbell-input">
+                        <div class="dumbbell-track">
+                            <div class="dumbbell-handle"></div>
+                            <div class="dumbbell-weight">
+                                <div class="weight-plate"></div>
+                                <div class="weight-plate"></div>
+                                <div class="weight-ring"></div>
+                            </div>
+                        </div>
+                        <div class="lift-label">
+                            <span class="down-label">REST</span>
+                            <span class="up-label">LIFT</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="dumbbell-card">
+                    <h2>Beast Mode</h2>
+                    <label class="dumbbell-toggle beast">
+                        <input type="checkbox" class="dumbbell-input">
+                        <div class="dumbbell-track">
+                            <div class="dumbbell-handle"></div>
+                            <div class="dumbbell-weight">
+                                <div class="weight-plate"></div>
+                                <div class="weight-plate"></div>
+                                <div class="weight-ring"></div>
+                            </div>
+                        </div>
+                        <div class="lift-label">
+                            <span class="down-label">OFF</span>
+                            <span class="up-label">ON</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="dumbbell-card featured">
+                    <h2>Rep Counter</h2>
+                    <label class="dumbbell-toggle counter">
+                        <input type="checkbox" class="dumbbell-input" id="repCounter">
+                        <div class="dumbbell-track">
+                            <div class="dumbbell-handle"></div>
+                            <div class="dumbbell-weight">
+                                <div class="weight-plate"></div>
+                                <div class="weight-plate"></div>
+                                <div class="weight-ring"></div>
+                            </div>
+                        </div>
+                        <div class="lift-label">
+                            <span class="down-label">INACTIVE</span>
+                            <span class="up-label">ACTIVE</span>
+                        </div>
+                    </label>
+                    <div class="rep-display">
+                        <p>Reps: <span id="repCount">0</span></p>
+                        <button id="resetReps" class="reset-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

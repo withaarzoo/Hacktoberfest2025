@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 0;
+  }
+  
+  @keyframes patternMove {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+  
+  .container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  h1 {
+    color:white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 3.5em;
+    font-family: fantasy;
+    font-weight: 200;
+  }
+  
+  @keyframes titlePulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .scratch-card {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .scratch-card.revealed {
+    animation: cardReveal 2s ease-in-out forwards;
+  }
+  
+  @keyframes cardReveal {
+    0% {
+      transform: scale(1) rotateY(0deg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    30% {
+      transform: scale(1.3) rotateY(0deg);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.6);
+    }
+    60% {
+      transform: scale(1.3) rotateY(360deg);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+      transform: scale(1.2) rotateY(360deg);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.8);
+    }
+  }
+  
+  .prize-image {
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    display: block;
+  }
+  
+  #scratchCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
+  
+  .shine-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 15px;
+  }
+  
+  .scratch-card.revealed .shine-effect {
+    animation: shine 1.5s ease-in-out;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -100%;
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      left: 200%;
+      opacity: 0;
+    }
+  }
+  
+  .confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #f0f;
+    animation: confettiFall 3s linear forwards;
+  }
+  
+  @keyframes confettiFall {
+    0% {
+      transform: translateY(0) rotateZ(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotateZ(720deg);
+      opacity: 0;
+    }
+  }
+  
+  #resetBtn {
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.952);
+    color: rgb(236, 116, 200);
+    font-size: 16px;
+    box-shadow: 0 3px 12px rgb(253, 240, 52, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 2;
+  }
+  
+  #resetBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  
+  #resetBtn:active {
+    transform: translateY(0);
+  }

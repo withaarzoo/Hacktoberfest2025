@@ -1,0 +1,128 @@
+/* ===== Body ===== */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Cassette Loader ===== */
+.cassette-loader {
+  width: 260px;
+  height: 140px;
+  perspective: 900px;
+}
+
+/* ===== Cassette Body ===== */
+.cassette-body {
+  width: 100%;
+  height: 100%;
+  background: #222;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3),
+              0 4px 10px rgba(255,255,255,0.05) inset;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px;
+  transform-style: preserve-3d;
+}
+
+/* ===== Label ===== */
+.label {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 28px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: inset 0 2px rgba(0,0,0,0.1);
+}
+
+/* ===== Reel ===== */
+.reel {
+  width: 60px;
+  height: 60px;
+  background: #333;
+  border-radius: 50%;
+  border: 4px solid #555;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.reel.left {
+  animation: spin-clockwise 1.3s linear infinite;
+}
+
+.reel.right {
+  animation: spin-clockwise 1.3s linear infinite;
+}
+
+/* ===== Reel Hole ===== */
+.hole {
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+
+/* ===== Tape Strip Inside Reel ===== */
+.tape-strip {
+  width: 2px;
+  height: 100%;
+  background: #666;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+/* ===== Tape Bridge Connecting Reels ===== */
+.tape-bridge {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #555;
+  transform: translateY(-50%);
+  border-radius: 3px;
+  z-index: 0;
+  animation: tape-flow 1.3s linear infinite;
+}
+
+/* ===== Animations ===== */
+@keyframes spin-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes tape-flow {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* ===== Optional: 3D Light Reflection ===== */
+.cassette-body::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.05));
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}

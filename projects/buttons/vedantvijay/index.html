@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aesthetic Anime Button</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fce3ec, #e0c3fc, #a2d2ff);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .anime-btn {
+      position: relative;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a18cd1);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .anime-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.9), 0 0 40px rgba(161, 140, 209, 0.7);
+    }
+
+    .anime-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Sparkle effect */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: sparkleAnim 1.5s linear forwards;
+    }
+
+    @keyframes sparkleAnim {
+      0% {
+        transform: scale(0.5) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.2) translateY(-50px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="anime-btn">✨ Click Me ✨</button>
+
+  <script>
+    const btn = document.querySelector(".anime-btn");
+
+    btn.addEventListener("click", (e) => {
+      const sparkle = document.createElement("span");
+      sparkle.classList.add("sparkle");
+
+      const x = e.clientX - btn.offsetLeft - 4;
+      const y = e.clientY - btn.offsetTop - 4;
+
+      sparkle.style.left = x + "px";
+      sparkle.style.top = y + "px";
+
+      btn.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 1500);
+    });
+  </script>
+</body>
+</html>

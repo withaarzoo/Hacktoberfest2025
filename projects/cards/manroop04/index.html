@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scratch Card</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="background-pattern"></div>
+  <div class="confetti-container" id="confettiContainer"></div>
+  
+  <div class="container">
+    <h1>Scratch the Card Below</h1>
+    <br>
+    <div class="scratch-card" id="scratchCard">
+      <img src="assets/image/pic.png" alt="Prize" class="prize-image" id="prizeImg">
+
+      <canvas id="scratchCanvas" width="400" height="300"></canvas>
+      
+      <div class="shine-effect"></div>
+    </div>
+
+    <button id="resetBtn" style="margin-top: 160px;">Try Again</button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
