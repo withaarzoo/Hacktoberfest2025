@@ -456,12 +456,12 @@
     "project_netlify_link": "https://highlevel-radio-button.netlify.app"
   },
   {
-    "name": "Srijit Dey",
-    "occupation": "Web Developer",
-    "place": "Kolkata, India",
-    "bio": "A passionate web developer with a knack for creating interactive applications.",
-    "github_profile_url": "https://github.com/zeropse",
-    "project_netlify_link": "https://retro-boot-loader.netlify.app/"
+    "name": "Gunn Arora",
+    "occupation": "Software Developer Intern",
+    "place": "Punjab, India",
+    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
+    "github_profile_url": "https://github.com/gunn333",
+    "project_netlify_link": "https://dreamy-trifle-c6e34b.netlify.app/"
   },
   {
     "name": "Vedant Vijay",
@@ -598,4 +598,22 @@
   "github_profile_url": "https://github.com/axizkhan",
   "project_netlify_link": "https://cool-card-2234.netlify.app/"
 }
+  },
+  {
+    "name": "Srijit Dey",
+    "occupation": "Web Developer",
+    "place": "Kolkata, India",
+    "bio": "A passionate web developer with a knack for creating interactive applications.",
+    "github_profile_url": "https://github.com/zeropse",
+    "project_netlify_link": "https://retro-boot-loader.netlify.app/"
+  },
+  {
+    "name": "Srijit Dey",
+    "occupation": "Web Developer",
+    "place": "Kolkata, India",
+    "bio": "A passionate web developer with a knack for creating interactive applications.",
+    "github_profile_url": "https://github.com/zeropse",
+    "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  }
 ]
+
