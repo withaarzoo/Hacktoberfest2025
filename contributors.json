@@ -526,5 +526,14 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
+  },
+  {
+    "name": "Aditya Upadhyay",
+    "occupation": "student",
+    "place": "Uttar Pradesh, India",
+    "bio": "Aspiring web developer ",
+    "github_profile_url": "https://github.com/Adi-3108",
+    "project_netlify_link": "https://animated-wizard-form.netlify.app/"
+
   }
 ]
