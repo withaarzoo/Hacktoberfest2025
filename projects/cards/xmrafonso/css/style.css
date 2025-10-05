@@ -1,0 +1,79 @@
+:root {
+    --accordion-bg: #ffffff;
+    --accordion-border: #e5e7eb;
+    --accordion-hover: #f9fafb;
+    --accordion-text: #111827;
+    --accordion-active-bg: #f3f4f6;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background-color: #f9fafb;
+    color: var(--accordion-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 600px;
+    background: var(--accordion-bg);
+    border: 1px solid var(--accordion-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--accordion-border);
+}
+
+.accordion-header {
+    background: var(--accordion-bg);
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.accordion-header:hover {
+    background: var(--accordion-hover);
+}
+
+.accordion-header svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active {
+    background: var(--accordion-active-bg);
+}
+
+.accordion-header.active svg {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 1.5rem;
+}
+
+.accordion-content.open {
+    padding: 1rem 1.5rem;
+}
+
+.accordion-content p {
+    margin: 0;
+    color: #374151;
+    line-height: 1.5;
+}

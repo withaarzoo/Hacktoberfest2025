@@ -606,6 +606,14 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Afonso Lucio",
+    "occupation": "Student",
+    "place": "Luxembourg",
+    "bio": "Just a random person trying to have fun coding.",
+    "github_profile_url": "[https://github.com/xMrAfonso](https://github.com/xMrAfonso)",
+    "project_netlify_link": "[https://xmrafonso-accordion.netlify.app/](https://xmrafonso-accordion.netlify.app/)"
   }
 ]
 
