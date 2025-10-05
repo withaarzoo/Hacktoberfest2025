@@ -606,6 +606,14 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Chiranjeev Vyas",
+    "occupation": "Security Intern @CRIS | VAPT | Bug Bounty Hunter",
+    "place": "Delhi , India",
+    "bio": "Security breaker, patch artist, and tech explorer thriving on building and breaking in today’s digital world.",
+    "github_profile_url": "https://github.com/thechiranjeevvyas",
+    "project_netlify_link": "https://follow-me-thecv.netlify.app/"
   }
 ]
 
