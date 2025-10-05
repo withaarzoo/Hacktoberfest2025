@@ -534,5 +534,13 @@
     "bio": "Aspiring web developer passionate about creating interactive and user-friendly web experiences.",
     "github_profile_url": "github.com/gurram-lahari",
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
+  },
+  {
+    "name": "Vaibhav Jain",
+    "occupation": "Software Engineer",
+    "place": "Bangalore, India",
+    "bio": "A Software Developer with experience in full-stack development, cloud technologies, and machine learning. Contributed to more than 10 full-stack and AI projects, delivering scalable applications and collaborating effectively within team environments.",
+    "github_profile_url": "https://github.com/v-aibha-v-jain",
+    "project_netlify_link": "https://day-and-night-cycle-card.netlify.app/"
   }
 ]
