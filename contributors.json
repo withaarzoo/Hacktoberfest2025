@@ -520,92 +520,12 @@
     "project_netlify_link": "https://cheery-valkyrie-67382a.netlify.app/"
   },
   {
-    "name": "Sumedh Udupa",
-    "occupation": "Full Stack Developer",
-    "place": "Bangalore, India",
-    "bio": "passionate about technology and open-source.",
-    "github_profile_url": "https://github.com/sumedhudupa",
-    "project_netlify_link": "https://sparkle-me.netlify.app/"
-  },
-  {
-    "name": "Sumedh Udupa",
-    "occupation": "Full Stack Developer",
-    "place": "Bangalore, India",
-    "bio": "passionate about technology and open-source.",
-    "github_profile_url": "https://github.com/sumedhudupa",
-    "project_netlify_link": "https://rotate-checkbox.netlify.app/"
-  },
-  {
-    "name": "Khushi Yadav",
-    "occupation": "Student at IIIT-Lucknow",
-    "place": "India",
-    "bio": "Loves creating UI components and exploring open source!",
-    "github_profile_url": "https://github.com/khushi964",
-    "project_netlify_link": "https://khushi964.netlify.app/"
-  },
-  {
-    "name": "Harshita Gupta",
-    "occupation": "Aspiring Software Developer",
-    "place": "India",
-    "bio": "Love building UI and learning Java & JS 🚀",
-    "github_profile_url": "https://github.com/hershiee",
-    "project_netlify_link": "https://fancy-button-harshita.netlify.app/"
-  },
-  {
-    "name": "Gunn Arora",
-    "occupation": "Software Developer Intern",
-    "place": "Punjab, India",
-    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
-    "github_profile_url": "https://github.com/gunn333",
-    "project_netlify_link": "https://starry-toggle.netlify.app"
-  },
-  {
-    "name": "Gunn Arora",
-    "occupation": "Software Developer Intern",
-    "place": "Punjab, India",
-    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
-    "github_profile_url": "https://github.com/gunn333",
-    "project_netlify_link": "https://dreamy-trifle-c6e34b.netlify.app/"
-  },
-  {
-    "name": "Gunn Arora",
-    "occupation": "Software Developer Intern",
-    "place": "Punjab, India",
-    "bio": "I'm a Computer Science student who loves building web projects and exploring AI & ML. I've worked on hackathons like Google Jalandhar Hackathon, contributed to open-source projects and co-authored Midnight Snacks and other anthologies. Coding, learning, and creating useful things keeps me going!",
-    "github_profile_url": "https://github.com/gunn333",
-    "project_netlify_link": "https://peaceful-unicorn-a6b4ee.netlify.app/"
-  },
-  {
-    "name": "Adnan khan",
-    "occupation": "Student",
-    "place": "Karnataka,India",
-    "bio": "I am currently a bca final year student and passionate about MERN stack development.",
-    "github_profile_url": "https://github.com/Adnankhan107",
-    "project_netlify_link": "https://friendly-rugelach-c33d15.netlify.app/"
-  },
-  {
-    "name": "Basundhara Singhdeo",
-    "occupation": "Student",
-    "place": "Jamshedpur, India",
-    "bio": "I like coding, coffee and music.",
-    "github_profile_url": "github.com/basundhara-070",
-    "project_netlify_link": "https://glowing-card.netlify.app/"
-  },
-  {
-    "name": "Srijit Dey",
-    "occupation": "Web Developer",
-    "place": "Kolkata, India",
-    "bio": "A passionate web developer with a knack for creating interactive applications.",
-    "github_profile_url": "https://github.com/zeropse",
-    "project_netlify_link": "https://retro-boot-loader.netlify.app/"
-  },
-  {
-    "name": "Srijit Dey",
-    "occupation": "Web Developer",
-    "place": "Kolkata, India",
-    "bio": "A passionate web developer with a knack for creating interactive applications.",
-    "github_profile_url": "https://github.com/zeropse",
-    "project_netlify_link": "https://modern-sidebar.netlify.app/"
+    "name": "Nayanika Acharjee",
+    "occupation": "Software engineer",
+    "place": "Agartala, India",
+    "bio": "Where technology meets empathy, I design and build experiences that resonate.",
+    "github_profile_url": "https://github.com/Nayanika-Acharjee",
+    "project_netlify_link": "https://fancy-button-nayanika.netlify.app/"
   }
 ]
 
