@@ -1,0 +1,72 @@
+/* Container */
+:root{
+  --blue-600: #2563eb; 
+  --gray-600: #4b5563; 
+  --gray-400: #9ca3af; 
+  --bg: #ffffff;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+}
+
+.container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:calc(100vh - 4rem);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.spinner{
+  width:3rem; 
+  height:3rem;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:1rem;
+  transform-origin:center center;
+  animation: spin 1s linear infinite;
+}
+
+/* conic-gradient*/
+.spinner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from -90deg,
+    rgba(37,99,235,0) 0deg,
+    rgba(37,99,235,0.06) 40deg,
+    rgba(37,99,235,0.12) 70deg,
+    var(--blue-600) 110deg,
+    rgba(37,99,235,0) 200deg
+  );
+  /* subtle bluish halo */
+  box-shadow: 0 4px 10px rgba(37,99,235,0.06);
+}
+
+.spinner::after{
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 9999px;
+  background: var(--bg);
+}
+.spinner .inner-glow{ display:none; }
+
+.message{
+  color:var(--gray-600);
+  margin:0;
+}
+
+@keyframes spin{
+  to { transform: rotate(360deg); }
+}
