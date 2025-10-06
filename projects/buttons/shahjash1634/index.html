@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Watercolor Transition</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="transition-overlay"></div>
+
+  <div class="container">
+    <button class="transition-button" id="transitionButton">
+      <span>Click Me</span>
+    </button>
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+    <defs>
+      <filter id="watercolor-bleed">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.04" numOctaves="1" result="warp" />
+        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="60" in="SourceGraphic" in2="warp" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script>
+    const button = document.getElementById('transitionButton');
+    const overlay = document.querySelector('.transition-overlay');
+    const body = document.body;
+    // Get the turbulence filter element from the SVG
+    const turbulence = document.querySelector('#watercolor-bleed feTurbulence');
+
+    button.addEventListener('click', () => {
+      if (body.classList.contains('is-transitioning')) return;
+      body.classList.add('is-transitioning');
+
+      // Show the overlay
+      overlay.style.display = 'block';
+
+      // Use GSAP to animate the filter and the overlay's scale
+      gsap.timeline({
+        onComplete: () => {
+          // After animation, change the theme
+          body.classList.toggle('theme-white');
+          overlay.style.display = 'none'; // Hide the overlay
+          body.classList.remove('is-transitioning');
+        }
+      })
+        .to(overlay, {
+          duration: 1.5,
+          scale: 0, // Scale up to cover the screen
+          ease: "power2.inOut"
+        })
+        .to(turbulence, {
+          // Animate the 'baseFrequency' to make the texture "boil" and change
+          attr: { baseFrequency: '0.04 0.1' },
+          duration: 1.2,
+          ease: "power2.inOut"
+        }, "-=1.5"); // Start this animation at the same time as the scale
+    });
+  </script>
+</body>
+
+</html>

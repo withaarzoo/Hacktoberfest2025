@@ -1,0 +1,152 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2c2a3a;
+}
+
+.cradle-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 15px;
+  background: linear-gradient(to right, #444, #888, #444);
+  border-radius: 10px;
+  border: 2px solid #333;
+  z-index: 20;
+}
+
+.newtons-cradle {
+  display: flex;
+  position: relative;
+  top: 7px;
+}
+
+.pendulum {
+  position: relative;
+  width: 50px;
+  height: 150px;
+  transform-origin: top center;
+}
+
+.pendulum::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: #777;
+}
+
+.cradle-ball {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f0f0f0, #a0a0a0, #404040);
+}
+
+.pendulum:nth-child(2),
+.pendulum:nth-child(3),
+.pendulum:nth-child(4) {
+  z-index: 10;
+}
+
+/* --- The Swing Animation --- */
+@keyframes swing-left {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(35deg);
+  }
+}
+
+@keyframes swing-right {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-35deg);
+  }
+}
+
+.pendulum:first-child {
+  animation: swing-left 2s infinite ease-in-out;
+}
+
+.pendulum:last-child {
+  animation: swing-right 2s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+/* --- "Wi-Fi" Sound Wave Effect --- */
+.cradle-ball::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  top: 100%;
+  width: 60px;
+  height: 30px;
+  border-radius: 0 0 60px 60px;
+  box-shadow:
+    0 0 0 3px orange,
+    0 0 0 8px rgba(255, 165, 0, 0.5),
+    0 0 0 13px rgba(255, 165, 0, 0.2);
+}
+
+@keyframes sound-wave {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  25% {
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --- FIX: Correct Sound Wave Timing --- */
+/* This flash appears on the SECOND ball when the RIGHT ball's energy transfers through */
+.pendulum:nth-child(2) .cradle-ball::after {
+  animation: sound-wave 2s infinite ease-out;
+  animation-delay: 0s;
+  /* Swapped from 1s to 0s */
+}
+
+/* This flash appears on the FOURTH ball when the LEFT ball's energy transfers through */
+.pendulum:nth-child(4) .cradle-ball::after {
+  animation: sound-wave 2s infinite ease-out;
+  animation-delay: 1s;
+  /* Swapped from 2s to 1s */
+}

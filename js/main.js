@@ -1,14 +1,12 @@
-// js/main.js
-
 document.addEventListener("DOMContentLoaded", () => {
   // --- DOM Elements ---
-  const container = document.getElementById("contributors-container");
-  const loader = document.getElementById("loader");
-  const loadMoreContainer = document.getElementById("load-more-container");
-  const loadMoreButton = document.getElementById("load-more-button");
-  const searchForm = document.getElementById("search-form");
-  const searchInput = document.getElementById("search-input");
-  const navbar = document.querySelector(".navbar-glass");
+  const container = document.getElementById("contributors-container"); //
+  const loader = document.getElementById("loader"); //
+  const loadMoreContainer = document.getElementById("load-more-container"); //
+  const loadMoreButton = document.getElementById("load-more-button"); //
+  const searchForm = document.getElementById("search-form"); //
+  const searchInput = document.getElementById("search-input"); //
+  const navbar = document.querySelector(".navbar-glass"); //
 
   // --- State Variables ---
   let allContributors = [];
@@ -25,9 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("contributors.json");
       if (!response.ok) throw new Error("contributors.json not found");
-      allContributors = await response.json();
+      let jsonData = await response.json();
 
-      // Display the first batch of placeholder contributors
+      // --- HANDLE DUPLICATES ---
+      // This section reorders the contributors to show unique ones first.
+      const seenUrls = new Set();
+      const uniqueContributors = [];
+      const duplicateContributors = [];
+
+      jsonData.forEach((contributor) => {
+        const url = contributor.github_profile_url;
+        if (!seenUrls.has(url)) {
+          seenUrls.add(url);
+          uniqueContributors.push(contributor);
+        } else {
+          duplicateContributors.push(contributor);
+        }
+      });
+
+      // Re-assemble the allContributors array with unique ones first
+      allContributors = [...uniqueContributors, ...duplicateContributors];
+
+      // Display the first batch of contributors
       displayNextBatch();
     } catch (error) {
       console.error(error);

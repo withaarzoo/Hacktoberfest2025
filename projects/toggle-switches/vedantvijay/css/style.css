@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 136, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+    animation: cosmic-drift 20s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes cosmic-drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-20px, -10px) rotate(1deg); }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 80px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(26, 26, 26, 0.9) 0%,
+        rgba(15, 15, 15, 0.95) 50%,
+        rgba(26, 26, 26, 0.9) 100%);
+    border-radius: 40px;
+    border: 2px solid #333;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 
+        inset 0 5px 15px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 0 rgba(0, 255, 136, 0);
+    backdrop-filter: blur(10px);
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.toggle-input:checked + .toggle-slider::before {
+    left: 100%;
+}
+
+.toggle-slider::after {
+    position: absolute;
+    content: "";
+    height: 56px;
+    width: 56px;
+    left: 12px;
+    bottom: 12px;
+    background: radial-gradient(circle at 30% 30%, 
+        #ffffff 0%, 
+        #f8f8f8 50%, 
+        #e8e8e8 100%);
+    border-radius: 50%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+}
+
+.toggle-input:checked + .toggle-slider::after {
+    transform: translateX(160px) rotateY(360deg);
+    background: radial-gradient(circle at 30% 30%, 
+        #00ff88 0%, 
+        #00cc66 50%, 
+        #009944 100%);
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 136, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+.toggle-input:checked + .toggle-slider {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 136, 0.2) 0%,
+        rgba(0, 204, 102, 0.15) 50%,
+        rgba(0, 255, 136, 0.2) 100%);
+    border-color: #00ff88;
+    box-shadow: 
+        inset 0 5px 15px rgba(0, 0, 0, 0.5),
+        0 10px 35px rgba(0, 255, 136, 0.3),
+        0 0 40px rgba(0, 255, 136, 0.4);
+}
+
+.status {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    text-align: center;
+}
+
+.status-text {
+    font-size: 32px;
+    color: #888;
+    font-weight: 300;
+    transition: all 0.5s ease;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px currentColor;
+}
+
+.status-text::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    right: -10px;
+    bottom: -5px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.toggle-input:checked ~ .status .status-text {
+    color: #00ff88;
+    text-shadow: 
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 30px #00ff88;
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+.toggle-input:checked ~ .status .status-text::before {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 
+        inset 0 0 15px rgba(0, 255, 136, 0.2),
+        0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+@keyframes pulse-glow {
+    0% { text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88; }
+    100% { text-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88, 0 0 45px #00ff88; }
+}
+
+.toggle-input:checked ~ .status .status-text::after {
+    content: "ON";
+}
+
+.toggle-input:not(:checked) ~ .status .status-text::after {
+    content: "OFF";
+}
+
+.status-text::after {
+    margin-left: 15px;
+    color: inherit;
+    font-size: 0.8em;
+}
+
+/* Hover effects */
+.toggle-switch:hover .toggle-slider {
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 0 5px 15px rgba(0, 0, 0, 0.5),
+        0 12px 35px rgba(0, 0, 0, 0.4),
+        0 0 0 0 rgba(0, 255, 136, 0);
+}
+
+.toggle-switch:hover .toggle-slider::after {
+    transform: scale(1.05);
+}
+
+.toggle-input:checked + .toggle-slider:hover::after {
+    transform: translateX(160px) rotateY(360deg) scale(1.05);
+}
+
+.toggle-switch:active .toggle-slider::after {
+    transform: scale(0.95);
+}
+
+.toggle-input:checked + .toggle-slider:active::after {
+    transform: translateX(160px) rotateY(360deg) scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .toggle-slider {
+        width: 200px;
+        height: 60px;
+    }
+    
+    .toggle-slider::after {
+        height: 44px;
+        width: 44px;
+        bottom: 8px;
+    }
+    
+    .toggle-input:checked + .toggle-slider::after {
+    transform: translateX(136px) rotateY(360deg);
+    }
+    
+    .status-text {
+        font-size: 24px;
+    }
+}

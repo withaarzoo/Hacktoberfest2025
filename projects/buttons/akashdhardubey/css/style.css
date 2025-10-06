@@ -1,0 +1,162 @@
+/* Simple CSS for buttons - Easy to understand! */
+
+/* Make everything look nice */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body background - light gray */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Main container - white box in center */
+.main-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Page title */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+/* Description text */
+p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+/* Basic button style - all buttons start with this */
+button {
+    padding: 15px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* When you hover over any button */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* When you click any button */
+button:active {
+    transform: translateY(0);
+}
+
+/* Blue button */
+.blue-button {
+    background-color: #3498db;
+    color: white;
+}
+
+.blue-button:hover {
+    background-color: #2980b9;
+}
+
+/* Green button */
+.green-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.green-button:hover {
+    background-color: #27ae60;
+}
+
+/* Red button */
+.red-button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.red-button:hover {
+    background-color: #c0392b;
+}
+
+/* Purple button */
+.purple-button {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.purple-button:hover {
+    background-color: #8e44ad;
+}
+
+/* Button with icon */
+.icon-button {
+    background-color: #f39c12;
+    color: white;
+    font-size: 18px;
+}
+
+.icon-button:hover {
+    background-color: #e67e22;
+}
+
+/* Big button */
+.big-button {
+    background-color: #34495e;
+    color: white;
+    padding: 20px 40px;
+    font-size: 20px;
+    margin: 20px 10px;
+}
+
+.big-button:hover {
+    background-color: #2c3e50;
+}
+
+/* Message area where we show messages */
+#message-area {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+    font-size: 16px;
+    color: #2c3e50;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make it work on phones too */
+@media (max-width: 600px) {
+    .main-container {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}

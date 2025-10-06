@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  padding: 32px;
+  margin: 0;
+  color: #222;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.carousel {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  padding: 24px;
+}
+
+.testimonial {
+  display: none;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.testimonial.active {
+  display: block;
+}
+
+.testimonial p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.testimonial h4 {
+  font-size: 14px;
+  color: #555;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff7f50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-size: 18px;
+  user-select: none;
+}
+
+.prev { left: 12px; }
+.next { right: 12px; }
+
+.prev:hover, .next:hover { background: #ff6347; }

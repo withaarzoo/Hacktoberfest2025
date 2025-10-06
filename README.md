@@ -110,6 +110,22 @@ To showcase your work, you need to deploy **only your component's folder** to Ne
     - Provide a clear title and description for your pull request.
     - Wait for your PR to be reviewed and merged.
 
+    **Important Note:** Please add your data object at the **end of the list** inside the `contributors.json` file. Do not add your details in the middle or at the beginning of the file. Your new entry should be placed after the last existing entry, separated by a comma.
+
+    For example:
+
+    ```txt
+    [
+        ...
+        {
+            // some one else's data
+        },
+        {
+            // Add your data object here
+        }
+    ]
+    ```
+
 ## Contribution Guidelines & Rules
 
 To ensure a high-quality showcase and a positive experience for everyone, please adhere to the following rules:
@@ -131,4 +147,5 @@ A huge thank you to all the wonderful people who have contributed to this projec
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 Thank you for your contribution! **Happy Hacking!** 🚀
+
 

@@ -1,0 +1,387 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Typography */
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Button Grid */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Glass Button Base */
+.glass-btn {
+    position: relative;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-width: 150px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.glass-btn:hover:before {
+    left: 100%;
+}
+
+.glass-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-btn:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+/* Button Variants */
+.glass-btn.primary {
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.3), rgba(102, 126, 234, 0.3));
+    border-color: rgba(74, 144, 226, 0.4);
+}
+
+.glass-btn.primary:hover {
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.4), rgba(102, 126, 234, 0.4));
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.3);
+}
+
+.glass-btn.secondary {
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.3), rgba(134, 142, 150, 0.3));
+    border-color: rgba(108, 117, 125, 0.4);
+}
+
+.glass-btn.secondary:hover {
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.4), rgba(134, 142, 150, 0.4));
+    box-shadow: 0 15px 40px rgba(108, 117, 125, 0.3);
+}
+
+.glass-btn.success {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.3), rgba(72, 187, 120, 0.3));
+    border-color: rgba(40, 167, 69, 0.4);
+}
+
+.glass-btn.success:hover {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.4), rgba(72, 187, 120, 0.4));
+    box-shadow: 0 15px 40px rgba(40, 167, 69, 0.3);
+}
+
+.glass-btn.warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 206, 84, 0.3));
+    border-color: rgba(255, 193, 7, 0.4);
+}
+
+.glass-btn.warning:hover {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.4), rgba(255, 206, 84, 0.4));
+    box-shadow: 0 15px 40px rgba(255, 193, 7, 0.3);
+}
+
+.glass-btn.danger {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.3), rgba(248, 81, 73, 0.3));
+    border-color: rgba(220, 53, 69, 0.4);
+}
+
+.glass-btn.danger:hover {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(248, 81, 73, 0.4));
+    box-shadow: 0 15px 40px rgba(220, 53, 69, 0.3);
+}
+
+.glass-btn.info {
+    background: linear-gradient(135deg, rgba(23, 162, 184, 0.3), rgba(52, 208, 235, 0.3));
+    border-color: rgba(23, 162, 184, 0.4);
+}
+
+.glass-btn.info:hover {
+    background: linear-gradient(135deg, rgba(23, 162, 184, 0.4), rgba(52, 208, 235, 0.4));
+    box-shadow: 0 15px 40px rgba(23, 162, 184, 0.3);
+}
+
+/* Button Text */
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Button Labels */
+.btn-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Ripple Effect */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Demo Section */
+.demo-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.9s both;
+}
+
+.demo-section h2 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.demo-section p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+}
+
+.click-counter {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+#clickCount {
+    color: #ffd700;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer {
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeIn 1s ease-out 1.2s both;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.footer strong {
+    color: white;
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    left: 20%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 80%;
+    top: 30%;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+    left: 60%;
+    top: 70%;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+    left: 10%;
+    top: 80%;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(5) {
+    left: 90%;
+    top: 60%;
+    animation-delay: 4s;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .button-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .glass-btn {
+        min-width: 200px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .glass-btn {
+        min-width: 150px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .demo-section {
+        padding: 1.5rem;
+    }
+}

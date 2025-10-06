@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Checkbox</title>
+<style>
+  :root{
+    --accent:#7c3aed;
+    --size:28px;
+    --bg:#0f0f17;
+    --fg:#e5e7eb;
+    --muted:#374151;
+    --radius:8px;
+    --transition:220ms cubic-bezier(.2,.9,.3,1);
+    --ripple:rgba(124,58,237,0.25);
+  }
+  body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg);
+    font-family:Inter,system-ui;
+    color:var(--fg);
+  }
+  .check{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    position:relative;
+    padding:10px 14px;
+    border-radius:14px;
+    transition:background var(--transition);
+  }
+  .check:hover{background:rgba(255,255,255,0.03)}
+  .check input{
+    position:absolute;
+    height:1px;width:1px;
+    overflow:hidden;
+    clip:rect(1px,1px,1px,1px);
+  }
+  .box{
+    width:var(--size);
+    height:var(--size);
+    min-width:var(--size);
+    display:grid;
+    place-items:center;
+    border-radius:var(--radius);
+    border:2px solid var(--muted);
+    transition:all var(--transition);
+    position:relative;
+  }
+  .box svg{
+    width:65%;height:65%;
+  }
+  .box path{
+    fill:none;
+    stroke:#fff;
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:20;
+    stroke-dashoffset:20;
+    transition:stroke-dashoffset 260ms var(--transition);
+  }
+  .check input:checked + .box{
+    background:var(--accent);
+    border-color:var(--accent);
+    box-shadow:0 0 12px var(--accent);
+    transform:scale(1.06);
+  }
+  .check input:checked + .box path{
+    stroke-dashoffset:0;
+  }
+  .check input:focus + .box{
+    box-shadow:0 0 0 4px rgba(124,58,237,0.25);
+  }
+  .label{
+    font-size:15px;
+    letter-spacing:-0.01em;
+  }
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    transform:translate(-50%,-50%) scale(0.2);
+    opacity:.8;
+    animation:ripple .55s cubic-bezier(.2,.9,.3,1);
+  }
+  @keyframes ripple{
+    to{transform:translate(-50%,-50%) scale(3.4);opacity:0}
+  }
+</style>
+</head>
+<body>
+
+<label class="check">
+  <input type="checkbox">
+  <span class="box">
+    <svg viewBox="0 0 24 24"><path d="M4.5 12.5 L9.5 17.5 L19 7"/></svg>
+  </span>
+  <span class="label">CheckBox</span>
+</label>
+
+<script>
+document.addEventListener('click',e=>{
+  const l=e.target.closest('.check');if(!l)return;
+  if(typeof e.clientX!=='number')return;
+  const r=l.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  const ripple=document.createElement('span');
+  ripple.className='ripple';
+  ripple.style.left=`${x}px`;ripple.style.top=`${y}px`;
+  ripple.style.width=r.width*1.3+'px';ripple.style.height=r.width*1.3+'px';
+  ripple.style.background=getComputedStyle(l).getPropertyValue('--ripple');
+  l.appendChild(ripple);setTimeout(()=>ripple.remove(),600);
+});
+</script>
+
+</body>
+</html>

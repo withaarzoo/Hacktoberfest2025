@@ -1,0 +1,77 @@
+/* A darker, space-like background */
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0c001f;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- THE MAIN EVENT BUTTON --- */
+.fancy-btn {
+    --glow-color: hsl(280, 100%, 70%); /* Set the glow color */
+    position: relative;
+    padding: 25px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1a1a1a;
+    border: 3px solid #2a2a2a;
+    border-radius: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* The interactive glow effect using a pseudo-element */
+.fancy-btn::before {
+    content: "";
+    position: absolute;
+    /* Use CSS variables for position, controlled by JS */
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--glow-color), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fancy-btn:hover::before {
+    opacity: 0.5;
+}
+
+/* Add a bright border on hover */
+.fancy-btn:hover {
+    border-color: var(--glow-color);
+    box-shadow: 0 0 30px var(--glow-color);
+}
+
+/* Keep the text readable above the glow */
+.fancy-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* --- THE PARTICLE EXPLOSION --- */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    /* Use CSS variables for animation, controlled by JS */
+    animation: explode var(--duration, 1s) ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        /* Use CSS variables for the destination */
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
+}

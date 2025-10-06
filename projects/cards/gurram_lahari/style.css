@@ -1,0 +1,69 @@
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #fff;
+  --text: #222;
+  --radius: 16px;
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 32px;
+  background: var(--bg);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 200px;
+  transition: transform 0.4s ease;
+}
+
+.info-card:hover .card-img {
+  transform: scale(1.08);
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.card-body p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
