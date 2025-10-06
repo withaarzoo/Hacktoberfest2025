@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Minimal Inputs</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: #f5e6c8;
+      text-shadow: 0 0 4px rgba(192, 160, 96, 0.5);
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      width: 90%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 6px rgba(192, 160, 96, 0.3);
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 12px rgba(192, 160, 96, 0.8);
+    }
+
+    label {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      color: #bbb;
+      pointer-events: none;
+      transition: 0.3s ease;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      top: -0.6rem;
+      left: 0.8rem;
+      background: #1a1a1a;
+      padding: 0 0.3rem;
+      font-size: 0.75rem;
+      color: #ffd27f;
+      border-radius: 5px;
+      text-shadow: 0 0 6px rgba(192, 160, 96, 0.7);
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      background: #c0a060;
+      color: #1a1a1a;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #d4b36b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Input Form</h2>
+    <div class="form-group">
+      <input type="text" id="name" placeholder=" " required>
+      <label for="name">Full Name</label>
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" placeholder=" " required>
+      <label for="email">Email Address</label>
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" placeholder=" " required>
+      <label for="password">Password</label>
+    </div>
+    <button type="submit">Submit</button>
+  </div>
+</body>
+</html>
