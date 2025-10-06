@@ -8,6 +8,14 @@
     "project_netlify_link": "https://neomorphismbutton.netlify.app/"
   },
   {
+    "name": "SOURAV KUMAR",
+    "occupation": "Software Developer/ Machine Learning Enthusiant",
+    "place": "Madhya Pradesh, India",
+    "bio": "Sourav Kumar, a passionate frontend developer skilled in React, AI/ML, and MERN stack, builds innovative, scalable solutions. Aspiring SDE, he explores emerging technologies, drives impactful projects, and thrives in collaborative, growth-oriented environments.",
+    "github_profile_url": "https://github.com/sourav349",
+    "project_netlify_link": "https://button-code-2401.netlify.app/"
+  },
+  {
     "name": "Aditi Sharma",
     "occupation": "Software engineer",
     "place": "Kolkata, India",
@@ -608,4 +616,3 @@
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
   }
 ]
-
