@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Checkboxes</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Modern Checkboxes</h1>
+
+      <div class="checkbox-group">
+        <label class="checkbox checkbox--style-1">
+          <input
+            type="checkbox"
+            class="checkbox__input"
+            id="checkbox1"
+            checked
+          />
+          <span class="checkbox__box">
+            <svg
+              class="checkbox__checkmark"
+              width="18px"
+              height="18px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M4 12.5l5 5L20 6"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+              />
+            </svg>
+          </span>
+          <span class="checkbox__label">Accept Terms & Conditions</span>
+        </label>
+
+        <label class="checkbox checkbox--style-2">
+          <input type="checkbox" class="checkbox__input" id="checkbox2" />
+          <span class="checkbox__box">
+            <svg
+              class="checkbox__checkmark"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+            >
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+            </svg>
+          </span>
+          <span class="checkbox__label">Subscribe to Newsletter</span>
+        </label>
+
+        <label class="checkbox checkbox--style-1">
+          <input
+            type="checkbox"
+            class="checkbox__input"
+            id="checkbox3"
+            disabled
+          />
+          <span class="checkbox__box">
+            <svg
+              class="checkbox__checkmark"
+              width="18px"
+              height="18px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M4 12.5l5 5L20 6"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+              />
+            </svg>
+          </span>
+          <span class="checkbox__label">Disabled Option</span>
+        </label>
+      </div>
+
+      <div class="controls">
+        <p>
+          Status of "Accept Terms & Conditions":
+          <span id="status1">Checked</span>
+        </p>
+        <p>Status of "Newsletter": <span id="status2">Unchecked</span></p>
+        <p>Status of "Disabled Option": <span id="status3">Disabled</span></p>
+      </div>
+    </div>
+  </body>
+  <script src="js/main.js"></script>
+</html>
