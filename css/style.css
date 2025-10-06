@@ -10,6 +10,7 @@
     --font-family: "Poppins", sans-serif;
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -66,7 +67,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-white);
+    color:rgb(240, 156, 0);
 }
 
 .nav-link {
@@ -74,7 +75,7 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 1rem;
-    color: var(--text-light);
+    color: rgb(240, 156, 0);
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 12px;
@@ -180,6 +181,7 @@ main {
 .contributor-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    
 }
 
 .profile-image {
@@ -192,6 +194,8 @@ main {
     transition: opacity 0.4s ease-in-out;
     background-color: var(--dark-bg);
 }
+
+
 
 .card-content {
     display: flex;
@@ -223,7 +227,7 @@ main {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    flex-grow: 1;
+    flex-grow: 1; /* This helps the bio text expand in flex container */
 }
 
 .card-content .stats {
