@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern SaaS Button</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 flex items-center justify-center">
+
+    <button
+        id="saasButton"
+        class="saas-button 
+               px-8 py-4 text-lg font-semibold 
+               text-white rounded-xl cursor-pointer 
+               bg-gradient-to-r from-blue-500 to-indigo-600 
+               hover:from-blue-600 hover:to-indigo-700 
+               focus:outline-none focus:ring-4 focus:ring-blue-300">
+        Click Me
+    </button>
+
+    <div id="messageBox" class="fixed top-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-xl hidden transition-opacity duration-300">
+        Button Clicked!
+    </div>
+
+    <!-- Link to external JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
