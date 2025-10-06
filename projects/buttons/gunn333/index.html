@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #0b0c1a, #1a1c2c 80%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(173, 216, 230, 0.4);
+      border-radius: 50%;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-200px) translateX(50px); opacity: 0; }
+    }
+
+    .ethereal-btn {
+      position: relative;
+      padding: 18px 50px;
+      font-size: 1.3rem;
+      color: #f0f4f8;
+      background: linear-gradient(145deg, #2b2f4a, #3c4070);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(173, 216, 230, 0.2), 0 8px 20px rgba(173, 216, 230, 0.1);
+      transition: all 0.4s ease;
+      text-shadow: 0 0 12px rgba(173, 216, 230, 0.5);
+    }
+
+    .ethereal-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle, rgba(173,216,230,0.25) 0%, rgba(173,216,230,0) 70%);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.6s ease;
+      border-radius: 50%;
+    }
+
+    .ethereal-btn:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .ethereal-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(173,216,230,0.5), 0 12px 30px rgba(173,216,230,0.3);
+      background: linear-gradient(145deg, #3c4070, #5a5f9e);
+    }
+
+    .ethereal-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 0 12px rgba(173,216,230,0.3), 0 6px 15px rgba(173,216,230,0.2);
+    }
+  </style>
+</head>
+<body>
+  <button class="ethereal-btn" id="ethBtn">Click Me</button>
+
+  <script>
+    const btn = document.getElementById('ethBtn');
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.top = Math.random() * window.innerHeight + 'px';
+      particle.style.width = particle.style.height = (Math.random() * 4 + 2) + 'px';
+      particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 6000);
+    }
+
+    setInterval(createParticle, 200);
+    
+    btn.addEventListener('click', () => {
+      btn.innerText = "Clicked!";
+      btn.style.background = "linear-gradient(145deg, #5a5f9e, #7a84c1)";
+      
+      setTimeout(() => {
+        btn.innerText = "Click Me!";
+        btn.style.background = "linear-gradient(145deg, #2b2f4a, #3c4070)";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
