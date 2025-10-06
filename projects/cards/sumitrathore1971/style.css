@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+
+:root {
+  --clr-blue: #1890ff;
+  --clr-green: #01c3a8;
+  --clr-orange: #ffb741;
+  --clr-red: #a63d2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #232228;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 50em;
+  margin-inline: auto;
+  gap: 3.25rem;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  padding: 5em 0;
+}
+
+/* Card styles */
+.card {
+  position: relative;
+  z-index: 555;
+  max-width: 20rem;
+  min-height: 20rem;
+  width: 90%;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  box-shadow: 0.063em 0.75em 1.563em rgb(0 0 0 / 78%);
+  border-radius: 2.25rem;
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.25rem;
+  z-index: -1;
+  border: 0.155rem solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 0.5em 0em 1.5em;
+}
+
+.card-header .date {
+  color: #ddd;
+}
+
+.card-header svg {
+  color: #fff;
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.card-body {
+  position: absolute;
+  width: 100%;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.7em 1.25em 0.5em 1.5em;
+}
+
+.card-body h3 {
+  color: #fff;
+  font-size: 1.375rem;
+  margin-top: 0.625em;
+  margin-bottom: 0.188em;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.card-body p {
+  color: #ddd;
+  font-size: 1rem;
+  letter-spacing: 0.031rem;
+}
+
+.card-body .progress {
+  margin-top: 0.938rem;
+}
+
+.card-body .progress-bar {
+  position: relative;
+  width: 100%;
+  background: #363636;
+  height: 0.313rem;
+  display: block;
+  border-radius: 3.125rem;
+}
+
+.card-body .progress-bar:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: block;
+  border-radius: 3.125rem;
+}
+
+.card-body .progress span:first-of-type {
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+  width: 100%;
+  display: block;
+  margin-bottom: 0.313rem;
+}
+
+.card-body .progress span {
+  margin-top: 0.313rem;
+  text-align: right;
+  display: block;
+  color: #fff;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-top: 0.063rem solid #292929;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7em 1.25em 0.5em 1.5em;
+  background: #151419;
+  border-bottom-left-radius: 2.25rem;
+  border-bottom-right-radius: 2.25rem;
+}
+
+.card-footer ul {
+  display: flex;
+  align-items: center;
+}
+
+.card-footer ul li {
+  list-style-type: none;
+  display: flex;
+  margin-right: -0.625rem;
+}
+
+.card-footer ul li img {
+  border-radius: 50%;
+  width: 1.875rem;
+  height: 1.875rem;
+  object-fit: cover;
+}
+
+.card-footer .btn-add {
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-footer .btn-add svg {
+  width: 1rem;
+}
+
+.card-footer .btn-countdown {
+  background: #222127;
+  color: #fff;
+  border-radius: 2em;
+  padding: 0.625rem 1.5rem;
+}
+
+/* Green card */
+.green {
+  background: radial-gradient(
+    ellipse at right top,
+    #107667ed 0%,
+    #151419 47%,
+    #151419 100%
+  );
+}
+
+.green::before {
+  background: linear-gradient(
+    45deg,
+    #232228,
+    #232228,
+    #232228,
+    #232228,
+    #01c3a8
+  );
+}
+
+.green .btn-add {
+  background: var(--clr-green);
+}
+
+.green .progress-bar:after {
+  width: 90%;
+  background: var(--clr-green);
+}
+
+.green .btn-countdown:hover {
+  background: var(--clr-green);
+}
+
+/* Blue card */
+.blue {
+  background: radial-gradient(
+    ellipse at right top,
+    #00458f8f 0%,
+    #151419 45%,
+    #151419 100%
+  );
+}
+
+.blue::before {
+  background: linear-gradient(
+    45deg,
+    #232228,
+    #232228,
+    #232228,
+    #232228,
+    #1890ff
+  );
+}
+
+.blue .btn-add {
+  background: var(--clr-blue);
+}
+
+.blue .progress-bar:after {
+  width: 20%;
+  background: var(--clr-blue);
+}
+
+.blue .btn-countdown:hover {
+  background: var(--clr-blue);
+}
+
+/* Orange card */
+.orange {
+  background: radial-gradient(
+    ellipse at right top,
+    #ffb74194 0%,
+    #151419 47%,
+    #151419 100%
+  );
+}
+
+.orange::before {
+  background: linear-gradient(
+    45deg,
+    #232228,
+    #232228,
+    #232228,
+    #232228,
+    #ffb741
+  );
+}
+
+.orange .btn-add {
+  background: var(--clr-orange);
+}
+
+.orange .progress-bar:after {
+  width: 30%;
+  background: var(--clr-orange);
+}
+
+.orange .btn-countdown:hover {
+  background: var(--clr-orange);
+}
+
+/* Red card */
+.red {
+  background: radial-gradient(
+    ellipse at right top,
+    #a63d2a82 0%,
+    #151419 47%,
+    #151419 100%
+  );
+}
+
+.red::before {
+  background: linear-gradient(
+    45deg,
+    #232228,
+    #232228,
+    #232228,
+    #232228,
+    #a63d2a
+  );
+}
+
+.red .btn-add {
+  background: var(--clr-red);
+}
+
+.red .progress-bar:after {
+  width: 50%;
+  background: var(--clr-red);
+}
+
+.red .btn-countdown:hover {
+  background: var(--clr-red);
+}
