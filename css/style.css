@@ -67,6 +67,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-white);
+    text-decoration: none;
 }
 
 .nav-link {
@@ -300,6 +301,45 @@ footer {
     opacity: 0.8;
 }
 
+
+/* 7. Styling for the Back to Top Button */
+.back-to-top {
+    /* Position and Visibility (as defined previously) */
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, background-color 0.3s, visibility 0.3s; 
+
+    /* Circular Button Style */
+    border-radius: 50%; 
+    /* Set the initial background color to your main accent green */
+    background-color: var(--accent-green, #4CAF50); 
+    color: white; /* Text/Icon color */
+    
+    /* Ensure it's a good size for a button */
+    width: 45px; 
+    height: 45px;
+    display: flex; /* Use flexbox to center the icon */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; 
+    text-decoration: none; 
+}
+
+/* Hover Effect: Use the color scheme of the search bar focus */
+.back-to-top:hover {
+    background-color: #31d858; 
+    box-shadow: 0 0 0 3px var(--accent-green-transparent, #2dba4e4a);
+}
+
+/* Class to show the button (from JavaScript) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
 /* --- 7. Responsive Design --- */
 @media (max-width: 1220px) {
     .contributor-card {
