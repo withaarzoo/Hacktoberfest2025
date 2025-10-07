@@ -1,0 +1,92 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  
+  .container {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 320px; /* Adjusted to fit 4 buttons per row */
+  }
+  
+  .form-one {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .answer {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 1.8rem;
+    text-align: right;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Style for all buttons */
+  .buttons,
+  .clear,
+  .equal {
+    width: 20%; /* Set width to fit 4 buttons per row */
+    padding: 15px;
+    margin: 5px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #f1f1f1;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button hover effect */
+  .buttons:hover,
+  .clear:hover,
+  .equal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Clear button style */
+  .clear {
+    background: #ff6666;
+    color: white;
+  }
+  
+  /* Equal button style */
+  .equal {
+    background: #4caf50;
+    color: white;
+  }
+  
+  /* Default button color */
+  .buttons {
+    background: #f7f7f7;
+  }
+  
+  .buttons.number {
+    background: #2575fc;
+    color: white;
+  }
+  
+  /* Button active effect */
+  .buttons:active,
+  .clear:active,
+  .equal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
