@@ -1,0 +1,159 @@
+:root {
+    --surface: #0b1110;       
+    --surface-2: #0a1312;   
+    --text: #f5faf7;        
+    --muted: #b9d3c6;         
+    --primary: #22c55e;       
+    --primary-600: #16a34a;  
+    --accent-mint: #34d399;   
+    --accent-lime: #a3e635;   
+    --ring: rgba(34, 197, 94, 0.35);
+    --card-radius: 18px;
+}
+ body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff00cc, #333399, #00f0ff, #ff9900);
+    background-size: 400% 400%;
+    color: #e8ecf1;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    margin: 0;
+    animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.card{
+    width: min(100vw, 480px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 2.5px solid black;
+    border-radius: 8%;
+    box-shadow: 0 50px 80px rgba(0,0,0,0.45);
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    backdrop-filter: blur(6px);
+}
+.card:where(:hover, :focus-within) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(8, 8, 8, 0.55);
+}
+.Profile{
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.Profile::after{
+    display: none;
+}
+.Profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 400ms ease;
+}
+.Info{
+    padding: 10px 10px 20px;
+}
+.Personal_Information {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.inf{
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    color: var(--muted);
+    font-size: 25px;
+    color: rgb(24, 24, 24);
+    font-weight: 700;
+}
+.Name{
+    margin: 10px 0 2px;
+    font-size: 30px;
+    font-weight: 900;
+    color: transparent;
+    background: linear-gradient(90deg, var(--accent-mint), var(--accent-lime));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.Text{
+    font-family: 'Dancing Script', cursive;
+    margin: 0 0 14px;
+    color: black;
+    line-height: 1.6;
+    font-size: 22px;
+    font-weight: 500;
+}
+.Other{
+    display: flex;
+    gap: 15px;
+}
+.Handles{
+    display: flex;
+    gap: 10px;
+    margin: 12px 0 14px;
+}
+.Links{
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    color: var(--text);
+    background: rgb(36, 36, 36);
+    border: 1px solid black;
+    transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.Links:hover {
+    background: rgba(21, 156, 71, 0.12);
+    border-color: rgba(0, 0, 0, 0.35);
+    color: #c8f7db;
+    transform: translateY(-2px);
+}
+.btn{
+    appearance: none;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font: inherit;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.btn--primary{
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-mint) 50%, var(--accent-lime) 100%);
+    color: black;
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.45);
+}
+.btn--primary:hover{
+    background: rgb(98, 239, 85);
+    box-shadow: 0 10px 24px rgba(55, 190, 105, 0.5);
+}
+.btn--ghost{
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-mint) 50%, var(--accent-lime) 100%);
+    color: black;
+    outline: 1px solid rgba(255,255,255,0.12);
+}
+.btn--ghost:hover{
+    background: rgb(98, 239, 85);
+    box-shadow: 0 10px 24px rgba(55, 190, 105, 0.5);
+}
+.btn:active{
+     transform: translateY(1px);
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
