@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Tracker | Health Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"> Health Dashboard</div>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="workouts.html"><i class="fas fa-dumbbell"></i> Workouts</a></li>
+      <li><a href="diet.html"><i class="fas fa-apple-alt"></i> Diet Plans</a></li>
+      <li><a href="sleep.html" class="active"><i class="fas fa-bed"></i> Sleep Tracker</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <section class="page-header">
+    <h1>Sleep Tracker</h1>
+    <p>Monitor your daily sleep, improve rest quality, and wake up refreshed.</p>
+  </section>
+
+  <section class="card-container">
+    <div class="card">
+      <i class="fas fa-moon icon"></i>
+      <h2>Last Night’s Sleep</h2>
+      <p>You slept for <strong>7 hours 25 minutes</strong>. Great job staying consistent!</p>
+      <button class="btn">View Details</button>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-chart-line icon"></i>
+      <h2>Weekly Sleep Trend</h2>
+      <p>Your average sleep this week is <strong>6.8 hours</strong> per night. Try aiming for 7–8 hours.</p>
+      <button class="btn">View Report</button>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-lightbulb icon"></i>
+      <h2>Sleep Improvement Tips</h2>
+      <p> Avoid screens before bed.<br>Limit caffeine in the evening.<br>Keep a consistent bedtime.</p>
+      <button class="btn">See More Tips</button>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
