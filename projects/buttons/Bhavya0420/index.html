@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <form name="form" class="form-one">
+      <input type="text" id="result" name="answer" class="answer">
+      <br>
+      <input type="button" value="AC" onclick="clearScreen()" class="clear">
+      <input type="button" value="Del" onclick="del()" class="buttons">
+      <input type="button" value="/" onclick="display('/')" class="buttons">
+      <input type="button" value="*" onclick="display('*')" class="buttons">
+      <br>
+      <input type="button" value="1" onclick="display('1')" class="buttons">
+      <input type="button" value="2" onclick="display('2')" class="buttons">
+      <input type="button" value="3" onclick="display('3')" class="buttons">
+      <input type="button" value="-" onclick="display('-')" class="buttons">
+      <br>
+      <input type="button" value="4" onclick="display('4')" class="buttons">
+      <input type="button" value="5" onclick="display('5')" class="buttons">
+      <input type="button" value="6" onclick="display('6')" class="buttons">
+      <input type="button" value="+" onclick="display('+')" class="buttons">
+      <br>
+      <input type="button" value="7" onclick="display('7')" class="buttons">
+      <input type="button" value="8" onclick="display('8')" class="buttons">
+      <input type="button" value="9" onclick="display('9')" class="buttons">
+      <input type="button" value="." onclick="display('.')" class="buttons">
+      <br>
+      <input type="button" value="0" onclick="display('0')" class="buttons">
+      <input type="button" value="=" onclick="giveAns('=')" class="equal">
+    </form>
+  </div>
+  <script src="./js/script.js"></script>
+</body>
+</html>
