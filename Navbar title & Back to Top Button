@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Website</title>
+<style>
+/* Navbar styling */
+nav {
+    background-color: #333;
+    padding: 0.5rem 1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+nav a:hover {
+    color: #ffcc00;
+}
+/* Back to Top button styling */
+#backToTop {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+#backToTop:hover {
+    background-color: #555;
+}
+/* Page content */
+section {
+    height: 1200px;
+    padding: 10px;
+    margin: 0;
+}
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <a href="index.html">Home</a>
+    <div>Menu</div>
+</nav>
+<!-- Page Content -->
+<section>
+    <h1>Welcome to My Website</h1>
+    <p>Scroll down to see the Back to Top button.</p>
+</section>
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">Back to Top</button>
+<script>
+// Show button when scrolled down
+window.onscroll = function() {
+    const btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+// Scroll to top smoothly
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
