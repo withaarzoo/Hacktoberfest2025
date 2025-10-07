@@ -1,0 +1,134 @@
+:root{
+      --bg:#071025;
+      --card-bg: rgba(255,255,255,0.03);
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --accent:#7c5cff;
+      --accent-2:#21d4fd;
+      --text: rgba(255,255,255,0.95);
+      --muted: rgba(255,255,255,0.65);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#031026 0%, #071025 100%);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .wrap{width:min(1100px,95%)}
+    h1{font-size:20px;margin:0 0 20px 0;text-align:center;font-weight:700}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      border-radius:14px;
+      overflow:hidden;
+      min-height:320px;
+      background:var(--card-bg);
+     box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      transition:transform .28s ease, box-shadow .28s ease;
+      position:relative;
+    }
+
+    .card img{display:block;width:100%;height:140px;object-fit:cover}
+    .card .card-content{padding:16px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;text-decoration:none;font-weight:600;border:none;cursor:pointer}    
+.card-glass {
+  background: linear-gradient(180deg, rgba(188, 19, 19, 0.05), rgba(209, 19, 19, 0.929));
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    100% 20%, 
+    95% 25%, 
+    100% 30%, 
+    100% 70%, 
+    95% 75%, 
+    100% 80%, 
+    100% 100%, 
+    0% 100%, 
+    0% 80%, 
+    5% 75%, 
+    0% 70%, 
+    0% 30%, 
+    5% 25%, 
+    0% 20%
+  );
+  transition: 
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.card-glass:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(245, 233, 233, 0.911);
+  background: linear-gradient(180deg, rgba(187, 30, 30, 0.42), rgba(255,255,255,0.05));
+}
+
+.card-glass .meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 0 0 44px;
+}
+
+.meta h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.meta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+    /*Card 2:*/
+    .card-flip{perspective:1400px}
+    .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.9,.3,1);transform-style:preserve-3d}
+    .flip-inner.is-flipped{transform:rotateY(180deg)}
+    .flip-front, .flip-back{
+      position:absolute;inset:0;border-radius:14px;padding:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    }
+    .flip-front{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));}
+    .flip-back{transform:rotateY(180deg);background:linear-gradient(135deg, rgba(124,92,255,0.08), rgba(33,212,253,0.06));}
+    .flip-back .btn{margin-top:12px}
+
+    /*Card 3:*/
+    .card-neon{position:relative;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;border:1px solid rgba(255,255,255,0.04);overflow:visible}
+    .card-neon:before{content:"";position:absolute;inset:-2px;border-radius:16px;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:-2;filter:blur(10px);opacity:.85;transition:all .35s}
+    .card-neon:hover:before{filter:blur(20px);transform:scale(1.03)}
+    .neon-content{position:relative;z-index:1;padding:20px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));text-align:center}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600;margin-bottom:8px}
+    @media (max-width:520px){
+      body{padding:18px}
+      .card img{height:120px}
+    }

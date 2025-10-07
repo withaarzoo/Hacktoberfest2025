@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Cards Designs</title>
+  <link rel="stylesheet" href="cards.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Cards UI</h1>
+    <div class="cards">
+      <article class="card card-glass" data-tilt tabindex="0" aria-label="Glass style card with tilt">
+        <img src="https://picsum.photos/seed/one/800/400" alt="landscape">
+        <div class="card-content">
+          <h2 style="margin:0 0 8px 0">Card 1</h2>
+          <p style="margin:0;color:var(--muted)">A responsive card component that includes ticket shape with hover and tilt effects.</p>
+          <div class="meta">
+            <div class="avatar"><img src="https://picsum.photos/seed/a/80/80" alt="avatar" style="width:100%;height:100%;object-fit:cover"></div>
+            <div>
+              <h3 style="font-size:14px;margin-bottom:4px">Customized by Mneeha</h3>
+              <p style="font-size:12px">UI</p>
+            </div>
+          </div>
+          <div style="margin-top:12px"></div>
+        </div>
+      </article>
+
+      
+      <article class="card card-flip" tabindex="0" aria-label="Flip card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="https://picsum.photos/seed/front/800/400" alt="front">
+            <div class="card-content">
+              <h2 style="margin:0 0 8px 0">Card 2</h2>
+              <p style="margin:0 0 12px 0;color:var(--muted)">Hover or tap to flip and reveal details.</p>
+            </div>
+          </div>
+
+          <div class="flip-back">
+            <div style="padding:12px">
+              <h3 style="margin-top:0">More Info</h3>
+              <p style="color:var(--muted)">Click on the card  and the card will flip.</p>
+              
+            </div>
+          </div>
+        </div>
+      </article>
+
+    
+      <article class="card card-neon" tabindex="0" aria-label="Neon glowing card">
+        <div class="neon-content">
+          <span class="tag">Card 3</span>
+          <h2 style="margin:8px 0">Neon Glow Card</h2>
+          <p style="margin:0 0 12px 0;color:var(--muted)">Hover over the card to see glowing effects.</p>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+<script src="cards.js"></script>
+</body>
+</html>
