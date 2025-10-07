@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f7fff9;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #3bb78f, #0bab64);
+  padding: 15px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #dfffe0;
+  border-bottom: 2px solid #dfffe0;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    background: #0bab64;
+    flex-direction: column;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+section {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+section h1 {
+  font-size: 2rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+section p,
+.subtext {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards,
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.card,
+.goal-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.goal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.card .icon,
+.goal-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.card h2,
+.card h3,
+.goal-card h3 {
+  color: #2e7d32;
+  margin-bottom: 8-10px;
+}
+
+.card p,
+.goal-card .percent,
+.workouts .detail,
+.diet .detail {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.btn {
+  background: #43a047;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: #2e7d32;
+}
+.goal-card .progress-bar {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.goal-card .progress {
+  background: linear-gradient(90deg, #66bb6a, #43a047);
+  height: 100%;
+  border-radius: 10px;
+}
+
+.motivation,
+.diet .tip {
+  background: #e8f5e9;
+  border-left: 5px solid #43a047;
+  padding: 15px;
+  margin: 40px auto 0;
+  border-radius: 8px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.motivation h3,
+.diet .tip h3 {
+  margin-bottom: 8px;
+  color: #2e7d32;
+}
+
+.motivation p,
+.diet .tip p {
+  color: #333;
+  font-size: 0.95rem;
+}
+

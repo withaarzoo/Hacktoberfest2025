@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khushi's Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"> Health Dashboard</div>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a class="active" href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="workouts.html"><i class="fas fa-dumbbell"></i> Workouts</a></li>
+      <li><a href="diet.html"><i class="fas fa-apple-alt"></i> Diet Plans</a></li>
+      <li><a href="sleep.html"><i class="fas fa-bed"></i> Sleep Tracker</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <section class="dashboard">
+    <h1>Welcome back, Khushi! </h1>
+    <p class="subtext">Here’s a quick look at your health progress today.</p>
+
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-dumbbell icon"></i>
+        <h3>Workouts</h3>
+        <p>You’ve completed <b>3/5</b> sessions this week.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-apple-alt icon"></i>
+        <h3>Diet</h3>
+        <p>Calories today: <b>1,450 kcal</b> </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-bed icon"></i>
+        <h3>Sleep</h3>
+        <p>Last night: <b>7.5 hours</b> </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-bullseye icon"></i>
+        <h3>Goals</h3>
+        <p>Progress: <b>65%</b> towards your weekly goal </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
