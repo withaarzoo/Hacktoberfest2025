@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>minato — Accessible Navigation</title>
+
+  <!-- favicon (SVG) -->
+  <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/images/favicon.svg">
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top navigation">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Homepage">
+        <img src="./assets/images/logo.svg" alt="minato logo" class="brand-logo" width="140" height="40">
+      </a>
+
+      <div class="header-controls">
+        <div class="search-wrap" role="search" aria-label="Search navigation">
+          <label for="navSearch" class="visually-hidden">Search menu</label>
+          <input id="navSearch" class="nav-search" type="search" placeholder="Search menu..." aria-label="Search menu" />
+          <button id="clearSearch" class="clear-search" aria-label="Clear search" title="Clear search" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <div class="search-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme (light/dark)" aria-label="Toggle theme">
+          <span class="theme-icon">
+            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation">
+          <svg class="hamburger" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="line line1" d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path class="line line2" d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path class="line line3" d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- overlay for mobile to dim background when nav open -->
+    <div id="navOverlay" class="nav-overlay" hidden></div>
+
+    <nav id="primaryNav" class="primary-nav" role="navigation" aria-label="Primary navigation">
+      <ul class="menu" role="menubar">
+        <li role="none"><a role="menuitem" href="#home">Home</a></li>
+
+        <li class="has-sub" role="none">
+          <button class="sub-toggle" aria-haspopup="true" aria-expanded="false">
+            Components
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul class="submenu" role="menu" aria-label="Components submenu">
+            <li role="none"><a role="menuitem" href="#buttons">Buttons</a></li>
+            <li role="none"><a role="menuitem" href="#cards">Cards</a></li>
+            <li role="none"><a role="menuitem" href="#loaders">Loaders</a></li>
+          </ul>
+        </li>
+
+        <li role="none"><a role="menuitem" href="#about">About</a></li>
+        <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+        <li role="none"><a role="menuitem" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero container" id="home">
+      <div class="hero-content">
+        <h1>Accessible Responsive Navigation</h1>
+        <p class="lead">Elegant, keyboard-friendly nav with live-search, submenu, theme toggle, and smooth interactions. Works without JavaScript; JS enhances the experience.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#buttons">See Buttons</a>
+          <a class="btn ghost" href="#cards">See Cards</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="card-header">
+            <div class="card-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="demo-nav">
+              <div class="demo-nav-item active">Home</div>
+              <div class="demo-nav-item">Components</div>
+              <div class="demo-nav-item">About</div>
+              <div class="demo-nav-item">Contact</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo container">
+      <article class="panel" id="buttons">
+        <h2>Buttons</h2>
+        <p>Demo anchor target for "Buttons". Try the search above to filter menu items.</p>
+        <div class="button-demo">
+          <button class="btn primary">Primary Button</button>
+          <button class="btn secondary">Secondary Button</button>
+          <button class="btn ghost">Ghost Button</button>
+        </div>
+      </article>
+
+      <article class="panel" id="cards">
+        <h2>Cards</h2>
+        <p>Demo anchor target for "Cards".</p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is a sample card with some content to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn ghost small">Action</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is a sample card with some content to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn ghost small">Action</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is a sample card with some content to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn ghost small">Action</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="loaders">
+        <h2>Loaders</h2>
+        <p>Demo anchor target for "Loaders".</p>
+        <div class="loader-demo">
+          <div class="loader-spinner"></div>
+          <div class="loader-bar">
+            <div class="loader-progress"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="about">
+        <h2>About</h2>
+        <p>Small demo page built for Hacktoberfest contribution — accessible and responsive.</p>
+        <div class="about-grid">
+          <div class="about-item">
+            <h3>Accessibility First</h3>
+            <p>Built with ARIA attributes, keyboard navigation, and screen reader support.</p>
+          </div>
+          <div class="about-item">
+            <h3>Responsive Design</h3>
+            <p>Works seamlessly across all device sizes from mobile to desktop.</p>
+          </div>
+          <div class="about-item">
+            <h3>Modern UI</h3>
+            <p>Clean, minimal design with smooth transitions and interactions.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="contact">
+        <h2>Contact</h2>
+        <p>Reach out via your GitHub profile link in the menu.</p>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Your email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Your message"></textarea>
+          </div>
+          <button class="btn primary">Send Message</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="./assets/images/logo.svg" alt="minato logo" class="brand-logo" width="120" height="34">
+          <p>Building accessible web experiences.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#buttons">Buttons</a></li>
+              <li><a href="#cards">Cards</a></li>
+              <li><a href="#loaders">Loaders</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>Built with care • minato nav</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
