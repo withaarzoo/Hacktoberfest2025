@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagination Component — Demo</title>
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #4f46e5;
+      --accent-contrast: white;
+      --pill: #111827;
+    }
+    /* Page layout */
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071022 0%, #071634 100%);
+      color:#e6eef8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      box-sizing:border-box;
+    }
+
+    .card{
+      width:100%;
+      max-width:920px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:24px;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    h1{font-size:18px;margin:0 0 12px 0}
+    p.muted{color:var(--muted);margin:0 0 18px 0;font-size:13px}
+
+    /* Content area */
+    .content{
+      min-height:160px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px dashed rgba(255,255,255,0.02);
+      margin-bottom:18px;
+      font-size:28px;
+      color:var(--muted);
+    }
+
+    /* Pagination styles */
+    .pagination{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .page-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:40px;
+      height:40px;
+      line-height:1;
+      padding:0 12px;
+      border-radius:10px;
+      background:transparent;
+      color:var(--muted);
+      border:1px solid transparent;
+      cursor:pointer;
+      user-select:none;
+      font-weight:600;
+      transition:all .18s ease;
+    }
+
+    .page-btn:hover{transform:translateY(-3px); color: #fff}
+
+    .page-btn[aria-current="page"]{
+      background:var(--accent);
+      color:var(--accent-contrast);
+      box-shadow: 0 6px 18px rgba(79,70,229,0.12);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    .page-btn[disabled]{
+      opacity:0.45;cursor:default;transform:none
+    }
+
+    .ellipsis{
+      color:var(--muted);
+      padding:0 6px;
+    }
+
+    /* Compact on small screens */
+    @media (max-width:520px){
+      .page-btn{min-width:36px;height:36px;padding:0 8px}
+      .content{min-height:120px;font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="application" aria-labelledby="pagTitle">
+    <h1 id="pagTitle">Pagination component (HTML + CSS + tiny JS)</h1>
+    <p class="muted">Click the page numbers or Prev/Next to switch pages. This demo updates a content area — the component is reusable.</p>
+
+    <div id="content" class="content" aria-live="polite">Page 1 content</div>
+
+    <nav class="pagination" aria-label="Pagination Navigation" id="pagination"></nav>
+  </div>
+
+  <script>
+    // Configuration: total pages and the current page
+    const totalPages = 23; // change this to any positive integer
+    let currentPage = 1;
+
+    // How many numeric buttons to show around the active page (on each side)
+    const sideButtons = 2; // shows up to 2 pages left and right of current
+
+    const paginationEl = document.getElementById('pagination');
+    const contentEl = document.getElementById('content');
+
+    function createBtn(text, ariaLabel, opts = {}){
+      const btn = document.createElement('button');
+      btn.className = 'page-btn';
+      btn.type = 'button';
+      btn.textContent = text;
+      if(ariaLabel) btn.setAttribute('aria-label', ariaLabel);
+      if(opts.disabled) btn.disabled = true;
+      if(opts.current) btn.setAttribute('aria-current','page');
+      if(opts.dataset) Object.entries(opts.dataset).forEach(([k,v]) => btn.dataset[k] = v);
+      return btn;
+    }
+
+    function renderPagination(){
+      paginationEl.innerHTML = '';
+
+      // Prev
+      const prev = createBtn('Prev', 'Go to previous page', {disabled: currentPage === 1});
+      prev.addEventListener('click', ()=> goToPage(currentPage - 1));
+      paginationEl.appendChild(prev);
+
+      // Always show first page
+      if(currentPage - sideButtons > 2){
+        const p1 = createBtn('1','Go to page 1', {dataset:{page:1}});
+        p1.addEventListener('click', ()=> goToPage(1));
+        paginationEl.appendChild(p1);
+
+        const dot = document.createElement('span'); dot.className='ellipsis'; dot.textContent='...';
+        paginationEl.appendChild(dot);
+      } else {
+        // show pages starting from 1 if close
+        for(let i=1; i< Math.max(1, currentPage - sideButtons); i++){
+          const p = createBtn(String(i), `Go to page ${i}`, {dataset:{page:i}});
+          p.addEventListener('click', ()=> goToPage(i));
+          paginationEl.appendChild(p);
+        }
+      }
+
+      // center window
+      const start = Math.max(1, currentPage - sideButtons);
+      const end = Math.min(totalPages, currentPage + sideButtons);
+
+      for(let i = start; i<= end; i++){
+        const isCurrent = i === currentPage;
+        const btn = createBtn(String(i), `Go to page ${i}`, {current: isCurrent, dataset:{page:i}});
+        if(isCurrent){ btn.setAttribute('aria-current','page'); }
+        else btn.addEventListener('click', ()=> goToPage(i));
+        paginationEl.appendChild(btn);
+      }
+
+      // show ending ellipsis + last page
+      if(currentPage + sideButtons < totalPages - 1){
+        const dot2 = document.createElement('span'); dot2.className='ellipsis'; dot2.textContent='...';
+        paginationEl.appendChild(dot2);
+
+        const last = createBtn(String(totalPages), `Go to page ${totalPages}`, {dataset:{page: totalPages}});
+        last.addEventListener('click', ()=> goToPage(totalPages));
+        paginationEl.appendChild(last);
+      } else {
+        // show remaining pages if close to end
+        for(let i=end+1;i<=totalPages;i++){
+          const p = createBtn(String(i), `Go to page ${i}`, {dataset:{page:i}});
+          p.addEventListener('click', ()=> goToPage(i));
+          paginationEl.appendChild(p);
+        }
+      }
+
+      // Next
+      const next = createBtn('Next', 'Go to next page', {disabled: currentPage === totalPages});
+      next.addEventListener('click', ()=> goToPage(currentPage + 1));
+      paginationEl.appendChild(next);
+    }
+
+    function goToPage(p){
+      if(p < 1) p = 1;
+      if(p > totalPages) p = totalPages;
+      if(p === currentPage) return;
+      currentPage = p;
+      // update sample content area
+      contentEl.textContent = `Page ${currentPage} content`;
+      renderPagination();
+      // move focus to the active page button (accessibility)
+      const active = paginationEl.querySelector('[aria-current="page"]');
+      if(active) active.focus();
+    }
+
+    // keyboard navigation: left/right
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') goToPage(currentPage -1);
+      if(e.key === 'ArrowRight') goToPage(currentPage +1);
+    });
+
+    // initial render
+    renderPagination();
+
+    // Expose tiny API for reuse
+    window.simplePagination = { goToPage: (n)=> goToPage(n), getCurrent: ()=> currentPage };
+  </script>
+</body>
+</html>
