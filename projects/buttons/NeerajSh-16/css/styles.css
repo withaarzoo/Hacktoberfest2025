@@ -1,0 +1,69 @@
+/* Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0b0c10; /* Static dark background */
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Button */
+.cosmic-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 56px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  text-shadow: 0 0 5px #ffffff44;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* Hover Glow Animation */
+.cosmic-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow:
+    0 0 10px rgba(0, 136, 255, 0.4),
+    0 0 20px rgba(0, 136, 255, 0.3),
+    0 0 30px rgba(0, 136, 255, 0.2);
+}
+
+/* Container for button stars */
+.button-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: -1;
+  background: #1a1a1a; /* Match button background */
+}
+
+/* Star style */
+.star {
+  position: absolute;
+  width: 1.5px;
+  height: 1.5px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
