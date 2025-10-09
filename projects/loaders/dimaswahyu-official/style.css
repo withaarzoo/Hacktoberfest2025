@@ -1,0 +1,92 @@
+:root{
+  --bg: #0b1220;
+  --ring: linear-gradient(90deg,#ffd54d 0 25%, transparent 25% 100%);
+  --mario-red: #d92b2b;
+  --mario-skin: #f6c99a;
+  --mario-blue: #2b66d9;
+  --mario-brown: #3b2b18;
+  --mario-black: #111;
+}
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 10% 10%, #16202b 0%, var(--bg) 40%);
+  font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  color:#fff;
+}
+
+.loader-wrap{
+  width:220px;
+  height:220px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.ring{
+  position:absolute; inset:0; margin:auto;
+  width:190px; height:190px; border-radius:50%;
+  background:conic-gradient(#ffd54d 0deg 60deg, transparent 60deg 100deg);
+  filter:drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  animation:spin 1.6s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg);} }
+
+.mario-wrap{
+  width:120px; height:120px; display:flex; align-items:center; justify-content:center;
+  animation:bop 0.9s ease-in-out infinite;
+  transform-origin:center bottom;
+  z-index:2;
+}
+@keyframes bop{
+  0%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} 100%{ transform: translateY(0);} }
+
+.mario{
+  width:86px; height:100px; position:relative; display:block;
+}
+.hat{
+  position:absolute; left:50%; transform:translateX(-50%);
+  width:86px; height:36px; background:var(--mario-red); border-radius:18px 18px 12px 12px; top:0;
+  box-shadow:inset 0 -6px 0 rgba(0,0,0,0.12);
+}
+.hat::after{
+  content:''; position:absolute; left:50%; top:8px; transform:translateX(-50%);
+  width:30px; height:30px; background:var(--mario-red); border-radius:50%;
+  box-shadow: 0 8px 0 rgba(0,0,0,0.08);
+}
+.face{
+  position:absolute; left:50%; transform:translateX(-50%);
+  top:24px; width:58px; height:44px; background:var(--mario-skin);
+  border-radius:12px; box-shadow:0 2px 0 rgba(0,0,0,0.08);
+}
+.nose{ position:absolute; left:50%; transform:translateX(-50%); top:34px; width:20px; height:16px; background:var(--mario-skin); border-radius:50%; }
+.mustache{
+  position:absolute; left:50%; transform:translateX(-50%); top:48px;
+  width:64px; height:24px; background:transparent;
+}
+.mustache::before, .mustache::after{
+  content:''; position:absolute; width:22px; height:18px; background:var(--mario-brown); border-radius:10px; top:0;
+}
+.mustache::before{ left:6px; transform:rotate(-12deg);} .mustache::after{ right:6px; transform:rotate(12deg);} 
+.mustache .center{ position:absolute; left:50%; transform:translateX(-50%); width:18px; height:14px; top:6px; background:var(--mario-brown); border-radius:8px; }
+.eye{ position:absolute; top:32px; width:8px; height:8px; background:var(--mario-black); border-radius:50%; }
+.eye.left{ left:30%; } .eye.right{ right:30%; }
+.body{
+  position:absolute; left:50%; transform:translateX(-50%); top:66px; width:80px; height:54px; background:var(--mario-blue); border-radius:10px; display:block;
+  box-shadow:inset 0 -6px 0 rgba(0,0,0,0.12);
+}
+.suspenders{ position:absolute; width:12px; height:30px; background:var(--mario-blue); top:-6px; left:14px; border-radius:4px; }
+.suspenders.right{ left:auto; right:14px; }
+.button{ position:absolute; width:10px; height:10px; background:var(--mario-red); border-radius:50%; top:4px; left:6px; }
+.button.right{ left:auto; right:6px; }
+.arm{ position:absolute; width:14px; height:36px; top:70px; background:var(--mario-red); border-radius:8px; }
+.arm.left{ left:6px; transform:rotate(-18deg);} .arm.right{ right:6px; transform:rotate(18deg);} 
+.leg{ position:absolute; width:14px; height:30px; bottom:0; background:var(--mario-brown); border-radius:6px; }
+.leg.left{ left:20px; transform:rotate(6deg);} .leg.right{ right:20px; transform:rotate(-6deg);} 
+.shadow{ position:absolute; left:50%; transform:translateX(-50%); bottom:-10px; width:60px; height:10px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 60%); border-radius:50%; filter:blur(4px); opacity:0.9; }
+.label{ position:absolute; bottom:-40px; left:50%; transform:translateX(-50%); font-size:13px; color:rgba(255,255,255,0.75); }
+@media (max-width:420px){ .loader-wrap{ transform:scale(0.85);} }
