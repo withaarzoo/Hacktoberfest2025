@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #e0e0e0;
+    overflow: hidden; 
+}
+
+.hover {
+    position: relative;
+    /* width: 200px; */
+    padding: 30px;
+    background: #1c1c2e;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: top center;
+    overflow: hidden; 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.profile-card {
+    position: relative;
+    width: 300px;
+    padding: 30px;
+    background: #1c1c2e;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    overflow: hidden; 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        #4CAF50 0%, 
+        #2196F3 25%, 
+        #FFEB3B 50%, 
+        #F44336 75%, 
+        #4CAF50 100%
+    );
+    border-radius: inherit;
+    z-index: -1;
+    animation: rotate 4s linear infinite paused; 
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+.profile-card:hover::before {
+    animation-play-state: running; 
+    opacity: 1; 
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.profile-card:hover {
+    transform: translateY(-10px) scale(1.02); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
+}
+
+.profile-image-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    overflow: hidden;
+    border: 4px solid #007bff; 
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.3); 
+    transition: border-color 0.4s ease;
+}
+
+.profile-card:hover .profile-image-container {
+    border-color: #00bcd4; 
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.profile-title {
+    font-size: 1em;
+    color: #bbbbbb;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: translateY(100%); 
+    transition: transform 0.4s ease-out;
+}
+
+.profile-card:hover .social-links {
+    transform: translateY(0); 
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 0.8em;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.social-link i {
+    font-size: 2em;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.social-link.linkedin:hover i {
+    color: #0077B5; 
+}
+
+.social-link.github:hover i {
+    color: #6e5494; 
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
