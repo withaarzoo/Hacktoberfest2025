@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle_mode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="Background" aria-hidden="true">
+        <div class="scene scene-day">
+            <div class="scene-sky"></div>
+            <div class="scene-sun"></div>
+            <div class="Badal c1"></div>
+            <div class="Badal c2"></div>
+            <div class="Badal c3"></div>
+            <div class="hills"></div>
+        </div>
+        <div class="scene scene-night">
+            <div class="scene-sky"></div>
+            <div class="scene-moon"></div>
+            <div class="stars"></div>
+            <div class="hills"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input type="checkbox" id="theme-toggle" class="hidden-input">
+        <label for="theme-toggle" class="toggle-switch">
+            <div class="toggle-thumb">
+                <div class="sun">
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                </div>
+                <div class="moon"></div>
+            </div>
+            <div class="star-1"></div>
+            <div class="star-2"></div>
+            <div class="star-3"></div>
+            <span class="toggle-text" aria-hidden="true">Switch to Night</span>
+        </label>
+    </div>
+    <script>
+        (function(){
+            var toggle = document.getElementById('theme-toggle');
+            var root = document.body;
+            if(!toggle) return;
+            function applyTheme(isDark){
+                if(isDark) root.classList.add('theme-dark'); else root.classList.remove('theme-dark');
+                try{ localStorage.setItem('preferred-theme', isDark ? 'dark' : 'light'); }catch(e){}
+            }
+            var saved = null;
+            try{ saved = localStorage.getItem('preferred-theme'); }catch(e){ saved = null; }
+            var systemPrefersDark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || false;
+            var isDarkInitial = saved ? (saved === 'dark') : systemPrefersDark;
+            try{ toggle.checked = !!isDarkInitial; }catch(e){}
+            applyTheme(!!isDarkInitial);
+            try{ var t = document.querySelector('.toggle-text'); if(t) t.textContent = isDarkInitial ? 'Switch to Light' : 'Switch to Night'; }catch(e){}
+            toggle.addEventListener('change', function(e){ applyTheme(e.target.checked); try{ var t=document.querySelector('.toggle-text'); if(t) t.textContent = e.target.checked ? 'Switch to Light' : 'Switch to Night'; }catch(er){} });
+            if(window.matchMedia){
+                try{
+                    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+                    if(typeof mql.addEventListener === 'function') mql.addEventListener('change', function(ev){ var manual=null; try{ manual = localStorage.getItem('preferred-theme'); }catch(e){manual=null;} if(!manual){ try{ toggle.checked = ev.matches; }catch(e){} applyTheme(ev.matches); }});
+                    else if(typeof mql.addListener === 'function') mql.addListener(function(ev){ var manual=null; try{ manual = localStorage.getItem('preferred-theme'); }catch(e){manual=null;} if(!manual){ try{ toggle.checked = ev.matches; }catch(e){} applyTheme(ev.matches); }});
+                }catch(e){}
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

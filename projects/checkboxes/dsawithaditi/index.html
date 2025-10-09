@@ -10,6 +10,23 @@
 
 <body>
 
+    <div class="bg-scene" aria-hidden="true">
+        <div class="scene scene-day">
+            <div class="scene-sky"></div>
+            <div class="scene-sun"></div>
+            <div class="cloud c1"></div>
+            <div class="cloud c2"></div>
+            <div class="cloud c3"></div>
+            <div class="hills"></div>
+        </div>
+        <div class="scene scene-night">
+            <div class="scene-sky"></div>
+            <div class="scene-moon"></div>
+            <div class="stars"></div>
+            <div class="hills"></div>
+        </div>
+    </div>
+
     <div class="container">
         <input type="checkbox" id="theme-toggle" class="hidden-input">
         <label for="theme-toggle" class="toggle-switch">
@@ -27,6 +44,61 @@
             <div class="star s3"></div>
         </label>
     </div>
+
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            var root = document.body;
+
+            function applyTheme(isDark) {
+                if (isDark) {
+                    root.classList.add('theme-dark');
+                } else {
+                    root.classList.remove('theme-dark');
+                }
+                try {
+                    localStorage.setItem('preferred-theme', isDark ? 'dark' : 'light');
+                } catch (e) {}
+            }
+
+            // Initialize from saved preference or system preference
+            var saved;
+            try {
+                saved = localStorage.getItem('preferred-theme');
+            } catch (e) {
+                saved = null;
+            }
+            var systemPrefersDark = false;
+            if (window.matchMedia) {
+                try {
+                    systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                } catch (e) {}
+            }
+            var isDarkInitial = saved ? (saved === 'dark') : systemPrefersDark;
+            toggle.checked = isDarkInitial;
+            applyTheme(isDarkInitial);
+
+            // Listen for toggle changes
+            toggle.addEventListener('change', function (e) {
+                applyTheme(e.target.checked);
+            });
+
+            // Optional: react to system changes if user hasn't manually chosen
+            if (window.matchMedia) {
+                try {
+                    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+                    mql.addEventListener('change', function (ev) {
+                        var manual;
+                        try { manual = localStorage.getItem('preferred-theme'); } catch (e) { manual = null; }
+                        if (!manual) {
+                            toggle.checked = ev.matches;
+                            applyTheme(ev.matches);
+                        }
+                    });
+                } catch (e) {}
+            }
+        })();
+    </script>
 
 </body>
 
