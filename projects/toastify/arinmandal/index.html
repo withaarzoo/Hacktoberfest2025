@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Toastify Component with Dark Mode</title>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="controls">
+			<div class="button-group">
+				<button
+					onclick="showToast('success', 'Success! Your action was completed.')">
+					Success
+				</button>
+				<button onclick="showToast('error', 'Error! Something went wrong.')">
+					Error
+				</button>
+				<button onclick="showToast('info', 'Info: New updates are available.')">
+					Info
+				</button>
+				<button onclick="showToast('warning', 'Warning! Check your inputs.')">
+					Warning
+				</button>
+			</div>
+
+			<button
+				class="theme-toggle"
+				id="theme-toggle"
+				aria-label="Toggle dark mode">
+				🌙
+			</button>
+		</div>
+
+		<div class="toast-container" id="toast-container"></div>
+
+		<script src="./js/script.js"></script>
+	</body>
+</html>
