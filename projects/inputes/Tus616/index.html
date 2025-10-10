@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account-Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card" aria-labelledby="form-title">
+      <header class="card_header">
+        <h1 id="form-title" class="card__title">Create your account</h1>
+      </header>
+
+      <form id="signup-form" class="form" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="fullName" class="field__label">Full name</label>
+            <input id="fullName" name="fullName" type="text" class="field__input" placeholder="Enter your full name..." autocomplete="name" required>
+            <p class="field__hint">As it appears on your ID.</p>
+            <p class="field__error" id="fullName-error" role="alert" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="email" class="field__label">Email</label>
+            <input id="email" name="email" type="email" class="field__input" placeholder="you@example.com" autocomplete="email" inputmode="email" required>
+            <p class="field__error" id="email-error" role="alert" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Minimum 8 characters">
+    <small>Use at least 8 characters with a mix of letters and numbers.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="confirm">Confirm password</label>
+    <input type="password" id="confirm" placeholder="Re-enter password">
+  </div>
+</div>
+
+
+        <div class="form__row">
+          <div class="field field--checkbox">
+            <input id="terms" name="terms" type="checkbox" class="checkbox__input" required>
+            <label for="terms" class="checkbox__label">I agree to the <a href="#" class="link">Terms</a> and <a href="#" class="link">Privacy Policy</a></label>
+          </div>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn" type="submit">Create account</button>
+        </div>
+      </form>
+
+      <footer class="card__footer">
+        <p>Already have an account? <a href="#" class="link">Sign in</a></p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
