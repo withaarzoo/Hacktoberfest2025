@@ -606,6 +606,14 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Md Faizan Ali",
+  "occupation": "MCA Student / Web Developer",
+  "place": "Sultanpur, India",
+  "bio": "I build polished frontend components and I'm contributing to Hacktoberfest 2025!",
+  "github_profile_url": "https://github.com/mefaizankhan",
+  "project_netlify_link": "https://button-mefaizankhan.netlify.app/"
   }
 ]
 
