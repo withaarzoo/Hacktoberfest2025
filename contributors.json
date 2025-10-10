@@ -607,5 +607,14 @@
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
   }
+  ,
+  {
+    "name": "Piyush Grover",
+    "occupation": "Frontend Developer",
+    "place": "Punjab, India",
+    "bio": "Open-source enthusiast contributing to Hacktoberfest!",
+    "github_profile_url": "https://github.com/PiyushGrover435",
+    "project_netlify_link": "https://interactive-card-piyushgrover435.netlify.app/"
+  }
 ]
 
