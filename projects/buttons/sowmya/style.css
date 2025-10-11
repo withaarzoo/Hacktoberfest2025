@@ -1,0 +1,50 @@
+/* --- General Page Setup --- */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d0d0d;
+  font-family: "Poppins", sans-serif;
+}
+
+/* --- Button Styling --- */
+.neon-btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 50px;
+  font-size: 1.3rem;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  box-shadow: 0 0 10px #00ffff inset, 0 0 20px #00ffff;
+}
+
+/* --- Hover Glow Animation --- */
+.neon-btn:hover {
+  color: #111;
+  background: #00ffff;
+  box-shadow: 0 0 10px #00ffff,
+              0 0 40px #00ffff,
+              0 0 80px #00ffff;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.05);
+}
+
+/* --- Optional Glow Animation --- */
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #00ffff; }
+  50% { box-shadow: 0 0 30px #00ffff; }
+  100% { box-shadow: 0 0 10px #00ffff; }
+}
+
+.neon-btn {
+  animation: pulse 2s infinite;
+}
