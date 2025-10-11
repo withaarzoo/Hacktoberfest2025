@@ -1,0 +1,64 @@
+/* Page layout */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #fff6f8, #ffe7ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+/* Cupcake Button Styling */
+.cupcake-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: linear-gradient(145deg, #ffe5f1, #fffaf0);
+  border: 2px solid #ffd3e2;
+  border-radius: 20px;
+  box-shadow: 0 6px 14px rgba(255, 182, 193, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cupcake-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 182, 193, 0.5);
+}
+
+.cupcake-btn:active {
+  transform: scale(0.96);
+}
+
+/* Cupcake image styling */
+.cupcake-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Button label */
+.label {
+  color: #ff6b9a;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
