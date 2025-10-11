@@ -1,0 +1,80 @@
+body {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Neon Radio Button */
+.neon-radio {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+}
+
+/* Hide default radio */
+.neon-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Custom radio mark */
+.radio-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #111;
+  border: 2px solid #00ffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffff;
+  transition: 0.3s;
+}
+
+/* Hover glow */
+.neon-radio:hover .radio-mark {
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff inset;
+}
+
+/* Checked state */
+.neon-radio input:checked ~ .radio-mark {
+  background-color: #00ffff;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff inset;
+}
+
+/* Inner dot */
+.radio-mark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.neon-radio input:checked ~ .radio-mark::after {
+  display: block;
+  top: 6px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0d0d0d;
+}
