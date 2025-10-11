@@ -606,6 +606,15 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
-  }
+  },
+  {
+  "name": "Tushar Kumar",
+  "occupation": "Student / Web Developer",
+  "place": "Lucknow, India",
+  "bio": "I build simple UI components and love competitive programming.",
+  "github_profile_url": "https://github.com/Tus616",
+  "project_netlify_link": "https://loading-your-page.netlify.app"
+}
+
 ]
 
