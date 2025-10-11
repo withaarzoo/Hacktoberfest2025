@@ -1,0 +1,68 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0d0d0d;
+}
+
+/* Navbar Container */
+.neon-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Logo */
+.neon-nav .logo {
+  color: #00ffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* Navigation Links */
+.neon-nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.neon-nav .nav-links li a {
+  text-decoration: none;
+  color: #00ffff;
+  font-size: 1rem;
+  transition: 0.3s;
+  text-shadow: 0 0 5px #00ffff;
+  position: relative;
+}
+
+/* Hover Glow */
+.neon-nav .nav-links li a:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.neon-nav .nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #00ffff;
+  transition: 0.3s;
+}
+
+.neon-nav .nav-links li a:hover::after {
+  width: 100%;
+  background-color: #ff00ff;
+}

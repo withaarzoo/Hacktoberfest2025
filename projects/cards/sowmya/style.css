@@ -1,0 +1,78 @@
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top left, #0a0a0a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Container */
+.card {
+  width: 320px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+}
+
+/* Image Section */
+.card-image {
+  height: 180px;
+  background: linear-gradient(135deg, #00ffff, #0077ff);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text Section */
+.card-content {
+  padding: 20px;
+  color: white;
+}
+
+.card-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  color: #bfbfbf;
+  line-height: 1.5;
+}
+
+/* Button */
+.glow-btn {
+  margin-top: 15px;
+  padding: 10px 30px;
+  background: transparent;
+  border: 2px solid #00ffff;
+  border-radius: 30px;
+  color: #00ffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.glow-btn:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 20px #00ffff, 0 0 60px #00ffff;
+}
