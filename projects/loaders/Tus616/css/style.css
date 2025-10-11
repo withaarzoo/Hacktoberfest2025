@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #00ff41;
+  --text-secondary: #00cc33;
+  --text-dim: #008822;
+  --accent: #ffff00;
+  --error: #ff3333;
+  --scanline: rgba(0, 255, 65, 0.03);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #ffffff;
+  --text-primary: #006600;
+  --text-secondary: #004400;
+  --text-dim: #003300;
+  --accent: #ff6600;
+  --error: #cc0000;
+  --scanline: rgba(0, 100, 0, 0.02);
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.crt-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.crt-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline) 50%);
+  background-size: 100% 4px;
+  animation: scanlines 8s linear infinite;
+  z-index: 1;
+}
+
+.crt-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 10px;
+  }
+}
+
+.container
+{
+  width: 90%;
+  max-width: 800px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--text-primary);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
+  position: relative;
+  animation: bootPulse 2s ease-in-out infinite;
+}
+.text {
+  color: rgb(9, 119, 2);
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 30px; 
+}
+
+.loader {
+  margin: 20px 0;
+}
+.loading {
+  width: 100%;
+  height: 20px;
+  background: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--text-dim), var(--text-primary));
+  width: 0%;
+  transition: width 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+@media (max-width: 600px) {
+  .ascii-header {
+    font-size: 8px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
