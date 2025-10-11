@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.css">
+    <title>S-Console Development</title>
+</head>
+
+<body>
+    <h1 class=" text-2xl font-bold mb-4">Simple Console Inputs</h1>
+
+    <div class="p-5" id="console-container"></div>
+
+    <div class="mt-10 p-5">
+        <form id="commandForm">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Command Key
+                </label>
+                <input
+                    class="shadow border border-gray-300 appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="commandKey" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    What to Show
+                </label>
+                <input
+                    class="shadow border border-gray-300 appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="commandOutput">
+            </div>
+            <div class="flex items-center justify-left">
+                <button
+                    class="border-2 border-gray-800 rounded-xl font-bold py-2 px-4 focus:outline-none focus:shadow-outline hover:bg-gray-100"
+                    type="submit">
+                    Add Command
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"></script>
+    <script>
+        const console = new sconsole('console-container');
+
+        console.addCommand('time', () => {
+            console.appendToConsole(new Date().toLocaleString());
+        });
+
+        console.addCommand('hello', () => {
+            console.appendToConsole('Hello from S-Console!');
+        });
+
+        console.addCommand('test', () => {
+            console.appendToConsole('Test command executed successfully!');
+        });
+
+        // Handle form submission for adding new commands
+        const form = document.getElementById('commandForm');
+        form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const keyInput = document.getElementById('commandKey');
+            const outputInput = document.getElementById('commandOutput');
+            const key = keyInput.value;
+            const output = outputInput.value;
+
+            console.addCommand(key, () => {
+                console.appendToConsole(output);
+            });
+
+            alert('Command added successfully!');
+            keyInput.value = '';
+            outputInput.value = '';
+        });
+    </script>
+</body>
+
+</html>
