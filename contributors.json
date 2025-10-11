@@ -1,5 +1,13 @@
 [
   {
+    "name": "Aayush",
+    "occupation": "Student",
+    "place": "Bhubaneswar, India",
+    "bio": "Crafting clean code, interactive UI, and occasional guitar riffs.",
+    "github_profile_url": "https://github.com/aayushj19",
+    "project_netlify_link": "https://moonlit-maamoul-bbe0ad.netlify.app/"
+  },
+  {
     "name": "Md Aarzoo Islam",
     "occupation": "Founder at oxzeen.com",
     "place": "Kolkata, India",
