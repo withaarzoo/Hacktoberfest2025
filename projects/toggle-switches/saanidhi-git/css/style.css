@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background 0.4s, color 0.4s;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2eecb;
+  color: #222;
+}
+
+/* Themes */
+body.light {
+  background: #f2eecb;
+  color: #222;
+}
+
+body.dark {
+  background: #0a0a23;
+  color: #9be8ff;
+}
+
+/* Container */
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Toggle Container */
+.toggle-container {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pixel Toggle */
+.toggle {
+  width: 90px;
+  height: 45px;
+  background: #c0c0c0;
+  border: 4px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+  image-rendering: pixelated;
+  box-shadow: 4px 4px #222;
+}
+
+.pixel-knob {
+  width: 32px;
+  height: 32px;
+  background: #ffb703;
+  border: 3px solid #333;
+  image-rendering: pixelated;
+  transition: all 0.3s ease;
+}
+
+body.dark .toggle {
+  background: #2a2a6b;
+  border-color: #66ccff;
+  box-shadow: 4px 4px #000;
+}
+
+body.dark .pixel-knob {
+  background: #00e1ff;
+  border-color: #fff;
+}
+
+/* Move knob */
+.toggle.active .pixel-knob {
+  transform: translateX(45px);
+}
+
+/* Text */
+h1 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.note {
+  margin-top: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
