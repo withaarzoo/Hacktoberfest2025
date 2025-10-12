@@ -606,6 +606,15 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+
+  {
+    "name": "Saanidhi Gade",
+    "occupation": "Frontend Developer- Student",
+    "place": "Pune, India",
+    "bio": "Aspiring Full Stack Developer and AI/ML Enthusiast. Keen in Frontend Development.",
+    "github_profile_url": "https://github.com/saanidhi-git",
+    "project_netlify_link": "https://68eb4704a66cd5edda4e573b--saanidhi-git-toggle-switch-pixelated.netlify.app/"
   }
 ]
 
