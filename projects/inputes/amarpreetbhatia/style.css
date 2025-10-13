@@ -1,0 +1,125 @@
+/* Styles moved from index.html */
+:root {
+  --bg: #f8f9fb;
+  --muted: #ccc;
+  --focus: #66afe9;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: var(--bg);
+}
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+input[type="search"] {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  outline: none;
+}
+input[type="search"]:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(102, 175, 233, 0.15);
+}
+
+.search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.search-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: #333;
+}
+.search-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 175, 233, 0.15);
+}
+.search-btn:hover {
+  background: #f1f3f5;
+}
+
+/* Responsive adjustments */
+/* Desktop-first base widths */
+input[type="search"] {
+  width: 420px; /* comfortable width on desktop */
+  max-width: 60vw;
+}
+
+/* Large desktop: keep input wider */
+@media (min-width: 1200px) {
+  input[type="search"] {
+    width: 520px;
+    max-width: 50vw;
+    font-size: 18px;
+  }
+  .search-btn {
+    padding: 10px 12px;
+  }
+}
+
+/* Tablet: reduce width and ensure comfortable touch target */
+@media (max-width: 1199px) and (min-width: 768px) {
+  input[type="search"] {
+    width: 360px;
+    max-width: 65vw;
+    font-size: 16px;
+  }
+  .search-btn {
+    padding: 10px 12px;
+  }
+}
+
+/* Mobile: make input fluid and ensure tap targets are large */
+@media (max-width: 767px) {
+  body {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .search {
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+    max-width: 480px;
+  }
+  input[type="search"] {
+    width: 100%;
+    max-width: none;
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+  .search-btn {
+    padding: 12px;
+    border-radius: 6px;
+  }
+}
+
+/* Very small phones: ensure spacing and larger tap area */
+@media (max-width: 420px) {
+  input[type="search"] {
+    font-size: 15px;
+    padding: 12px 10px;
+  }
+  .search-btn {
+    padding: 12px 10px;
+  }
+}
