@@ -606,6 +606,13 @@
     "bio": "A passionate web developer with a knack for creating interactive applications.",
     "github_profile_url": "https://github.com/zeropse",
     "project_netlify_link": "https://modern-sidebar.netlify.app/"
+  },
+  {
+    "name": "Amarpreet",
+    "occupation": "Software engineer",
+    "place": "Noida, India",
+    "bio": "Forever curious, I love programming with JAVA, Javascript and Python, crafting elegant, cross-platform solutions.",
+    "github_profile_url": "https://github.com/amarpreetbhatia",
+    "project_netlify_link": "https://simple-searchbox.netlify.app/"
   }
 ]
-
