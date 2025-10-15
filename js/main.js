@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form"); //
   const searchInput = document.getElementById("search-input"); //
   const navbar = document.querySelector(".navbar-glass"); //
+  const backToTopButton = document.getElementById("back-to-top"); //
 
   // --- State Variables ---
   let allContributors = [];
@@ -188,14 +189,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * Handles navbar style change on scroll.
+   * Handles navbar style change and back-to-top button visibility on scroll.
    */
   function handleScroll() {
-    if (window.scrollY > 50) {
+    const scrollY = window.scrollY;
+    
+    // Navbar style change
+    if (scrollY > 50) {
       navbar.classList.add("navbar-scrolled");
     } else {
       navbar.classList.remove("navbar-scrolled");
     }
+    
+    // Back to top button visibility
+    if (scrollY > 300) {
+      backToTopButton.classList.add("visible");
+    } else {
+      backToTopButton.classList.remove("visible");
+    }
+  }
+
+  /**
+   * Smooth scroll to top function.
+   */
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   // --- Event Listeners ---
@@ -203,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   searchForm.addEventListener("submit", (e) => e.preventDefault());
   searchInput.addEventListener("input", filterContributors);
   window.addEventListener("scroll", handleScroll);
+  backToTopButton.addEventListener("click", scrollToTop);
 
   // --- Initial Load ---
   initialize();

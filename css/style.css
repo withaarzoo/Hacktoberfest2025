@@ -10,6 +10,10 @@
     --font-family: "Poppins", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -67,6 +71,20 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-white);
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-link:hover .logo {
+    color: var(--accent-green);
 }
 
 .nav-link {
@@ -440,4 +458,50 @@ footer {
 }
 .search-button:hover {
     background-color: #31d858;
+}
+
+/* --- Back to Top Button --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    
+    background: var(--accent-green);
+    color: var(--text-white);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.5rem;
+    cursor: pointer;
+    
+    transform: translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+    
+    transition: all 0.3s ease;
+    
+    box-shadow: 0 4px 20px rgba(45, 186, 78, 0.3);
+}
+
+.back-to-top.visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #31d858;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(45, 186, 78, 0.4);
+}
+
+.back-to-top:active {
+    transform: translateY(-1px);
 }
