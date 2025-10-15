@@ -441,3 +441,45 @@ footer {
 .search-button:hover {
     background-color: #31d858;
 }
+.footer {
+  background: #0f172a;
+  color: #f1f5f9;
+  text-align: center;
+  padding: 10px 10px;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38bdf8;
+}
+
+.footer-content p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-link {
+  color: #f1f5f9;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #38bdf8; /* light blue hover effect */
+}
+
+footer .copyright {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
