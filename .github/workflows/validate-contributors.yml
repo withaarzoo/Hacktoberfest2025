@@ -1,0 +1,31 @@
+name: Validate contributors.json
+
+on:
+  pull_request:
+    paths:
+      - 'contributors.json'
+      - '.github/scripts/validate_contributors.js'
+  push:
+    paths:
+      - 'contributors.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          # no external dependencies; make script executable
+          ls -la .github/scripts || true
+
+      - name: Run contributors.json validator
+        run: |
+          node .github/scripts/validate_contributors.js
