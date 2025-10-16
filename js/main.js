@@ -13,6 +13,31 @@ document.addEventListener("DOMContentLoaded", () => {
   let displayedCount = 0;
   const batchSize = 50;
   let cardObserver;
+  const displayedUsernames = new Set();
+
+  const DEFAULT_AVATAR = "https://avatars.githubusercontent.com/u/583231?v=4"; // fallback avatar (Octocat)
+
+  /**
+   * Normalizes a github_profile_url or raw username to a username string.
+   * Returns null when not parseable.
+   */
+  function normalizeGithubUsername(urlOrValue) {
+    if (!urlOrValue || typeof urlOrValue !== "string") return null;
+    let str = urlOrValue.trim();
+    if (!str) return null;
+    if (!str.includes("github.com")) {
+      return str.replace(/^@/, "").replace(/\/+$/, "").toLowerCase();
+    }
+    try {
+      const u = new URL(str, "https://github.com");
+      const parts = u.pathname.split("/").filter(Boolean);
+      if (parts.length === 0) return null;
+      return parts[parts.length - 1].toLowerCase();
+    } catch (e) {
+      const parts = str.split("/").filter(Boolean);
+      return parts.length ? parts[parts.length - 1].toLowerCase() : null;
+    }
+  }
 
   /**
    * Main function to fetch the initial JSON and display the first batch.
@@ -25,24 +50,30 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("contributors.json not found");
       let jsonData = await response.json();
 
-      // --- HANDLE DUPLICATES ---
-      // This section reorders the contributors to show unique ones first.
-      const seenUrls = new Set();
-      const uniqueContributors = [];
-      const duplicateContributors = [];
-
+      // --- HANDLE DUPLICATES (DEDUPE AT LOAD) ---
+      // Normalize github usernames and keep a single entry per username.
+      // If multiple entries exist we preserve the first and collect project links in `projects`.
+      const map = new Map();
+      let fallbackCounter = 0;
       jsonData.forEach((contributor) => {
-        const url = contributor.github_profile_url;
-        if (!seenUrls.has(url)) {
-          seenUrls.add(url);
-          uniqueContributors.push(contributor);
+        const rawUrl = contributor.github_profile_url || contributor.github || contributor.github_profile || "";
+        const username = normalizeGithubUsername(rawUrl);
+        const key = username || `__fallback_${++fallbackCounter}`;
+        if (!map.has(key)) {
+          // clone to avoid mutating original and attach projects array
+          const clone = Object.assign({}, contributor);
+          clone.__normalized_username = username;
+          clone.projects = clone.projects || [];
+          if (clone.project_netlify_link) clone.projects.push(clone.project_netlify_link);
+          map.set(key, clone);
         } else {
-          duplicateContributors.push(contributor);
+          // aggregate project links into existing entry (no duplicate card will be created)
+          const existing = map.get(key);
+          if (contributor.project_netlify_link) existing.projects.push(contributor.project_netlify_link);
         }
       });
 
-      // Re-assemble the allContributors array with unique ones first
-      allContributors = [...uniqueContributors, ...duplicateContributors];
+      allContributors = Array.from(map.values());
 
       // Display the first batch of contributors
       displayNextBatch();
@@ -64,8 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     batch.forEach((contributor, index) => {
+      // render-time guard: skip if this normalized username is already displayed
+      const normalized = contributor.__normalized_username || normalizeGithubUsername(contributor.github_profile_url || "");
+      if (normalized && displayedUsernames.has(normalized)) return;
       const card = createPlaceholderCard(contributor, displayedCount + index);
       container.appendChild(card);
+      // mark as rendered to prevent duplicates in subsequent batches
+      if (normalized) displayedUsernames.add(normalized);
       cardObserver.observe(card);
     });
 
@@ -84,12 +120,17 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   function createPlaceholderCard(contributor, index) {
     const { name, bio, github_profile_url, project_netlify_link } = contributor;
-    const username = github_profile_url.split("/").pop();
+    const username = normalizeGithubUsername(github_profile_url) || (github_profile_url && github_profile_url.split("/").pop()) || `user-${index}`;
 
     const card = document.createElement("div");
     card.className = "contributor-card";
     card.style.animationDelay = `${index * 50}ms`;
     card.dataset.username = username;
+    // attach projects if aggregated
+    if (contributor.projects && Array.isArray(contributor.projects)) {
+      // store as JSON string for possible later use
+      card.dataset.projects = JSON.stringify(contributor.projects);
+    }
 
     // Use the name from the JSON file as an initial placeholder
     card.innerHTML = `
@@ -120,33 +161,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = card.dataset.username;
     if (!username || card.dataset.loaded) return;
 
-    try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
-      if (!response.ok) throw new Error("User not found");
-      const data = await response.json();
+    const data = await safeFetchGithubUser(username);
+    card.dataset.loaded = "true";
 
-      card.dataset.loaded = "true"; // Mark as loaded
+    // Name element
+    const nameElement = card.querySelector("h3");
+    if (nameElement) nameElement.textContent = (data && (data.name || data.login)) || nameElement.textContent || `@${username}`;
 
-      const nameElement = card.querySelector("h3");
-      // Use the GitHub name, but fall back to the username if the name isn't set
-      nameElement.textContent = data.name || data.login;
+    // Profile image (guarded)
+    const profileImage = card.querySelector(".profile-image");
+    if (profileImage) {
+      if (data && data.avatar_url) {
+        const imgEl = profileImage;
+        imgEl.style.opacity = 0;
+        imgEl.onload = () => (imgEl.style.opacity = 1);
+        imgEl.onerror = () => (imgEl.src = DEFAULT_AVATAR);
+        imgEl.src = data.avatar_url;
+      } else {
+        profileImage.src = DEFAULT_AVATAR;
+      }
+    }
 
-      // Update image with a smooth fade-in effect
-      const profileImage = card.querySelector(".profile-image");
-      profileImage.style.opacity = 0;
-      profileImage.onload = () => {
-        profileImage.style.opacity = 1;
-      };
-      profileImage.src = data.avatar_url;
+    // Stats (guarded)
+    const stats = card.querySelectorAll(".stat-value");
+    if (stats && data) {
+      if (stats[0]) stats[0].textContent = data.followers != null ? data.followers : "--";
+      if (stats[1]) stats[1].textContent = data.following != null ? data.following : "--";
+      if (stats[2]) stats[2].textContent = data.public_repos != null ? data.public_repos : "--";
+    } else if (stats) {
+      stats.forEach(s => (s.textContent = "--"));
+    }
 
-      // Update stats
-      const stats = card.querySelectorAll(".stat-value");
-      stats[0].textContent = data.followers || 0;
-      stats[1].textContent = data.following || 0;
-      stats[2].textContent = data.public_repos || 0;
-    } catch (error) {
-      console.error(`Failed to fetch data for ${username}:`, error);
-      card.querySelector(".bio").textContent = "Could not load GitHub data.";
+    // If fetch failed, show a short message in bio
+    const bioEl = card.querySelector(".bio");
+    if (bioEl && !data) {
+      bioEl.textContent = "GitHub data unavailable (rate limit or network error).";
     }
   }
 
