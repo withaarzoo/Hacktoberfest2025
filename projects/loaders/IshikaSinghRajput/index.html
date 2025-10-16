@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Neon Loader</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #0d001a;
+            /* Dark, almost black background for better neon contrast */
+            overflow: hidden;
+        }
+
+        /* The Loader Container */
+        .neon-loader {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 5px;
+            box-sizing: border-box;
+            /* Animation for the neon glow shadow */
+            animation: pulse-shadow 1.5s infinite alternate;
+        }
+
+        /* The Spinning Ring */
+        .loader-ring {
+            width: 100%;
+            height: 100%;
+            border: 5px solid transparent;
+            border-top-color: #ff33cc;
+            /* Pink Neon Color */
+            border-right-color: #00ffff;
+            /* Cyan Neon Color */
+            border-radius: 50%;
+            box-sizing: border-box;
+            /* Inner glow effect for the neon colors */
+            box-shadow: 0 0 10px #ff33cc, 0 0 20px #00ffff;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Keyframes for the Spinning Animation */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframes for the Pulsing Neon Shadow */
+        @keyframes pulse-shadow {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 51, 204, 0.5), 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 30px #ff33cc, 0 0 50px #00ffff, 0 0 70px #ff33cc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="neon-loader">
+        <div class="loader-ring"></div>
+    </div>
+
+</body>
+
+</html>
